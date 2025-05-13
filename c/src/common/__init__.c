@@ -40,7 +40,6 @@ void device_init(){
 	PutDhtInLink();
 	PutBeeperInLink();
 	PutPressureInLink();
-	PutHCInLink();
 	PutSGInLink();
     device *p = device_phead->next;
 	while(p != NULL){

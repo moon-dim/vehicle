@@ -57,7 +57,6 @@ void PutLEDInLink();
 void PutDhtInLink();
 void PutBeeperInLink();
 void PutPressureInLink();
-void PutHCInLink();
 void putCameraInLink();
 void PutSGInLink();
 

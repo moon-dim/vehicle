@@ -11,7 +11,7 @@ set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/c/include)      # 头文件目录
 set(LIB_DIR ${CMAKE_SOURCE_DIR}/python/libs)        # 库文件目录
 
 # 查找Python3开发环境
-find_package(Python3 COMPONENTS Development REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
 # 添加头文件搜索路径
 include_directories(
@@ -37,6 +37,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   mosquittopp  # libmosquittopp.so
   zlog         # libzlog.so
   sqlite3      # libsqlite3.so
+  ${Python3_LIBRARIES}
+  ${Python3_LINK_OPTIONS}
 )
 
 # 设置可执行文件输出目录

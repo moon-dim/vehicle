@@ -13,7 +13,6 @@
 void py_init()
 {
     Py_Initialize();
-    PyEval_InitThreads();
     PyObject *sys = PyImport_ImportModule("sys");
     PyObject *path = PyObject_GetAttrString(sys, "path");
     PyList_Append(path, PyUnicode_FromString("../../../python"));

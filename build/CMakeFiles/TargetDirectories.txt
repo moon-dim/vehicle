@@ -1,3 +1,0 @@
-/home/pi/Projects/vehicle/build/CMakeFiles/rebuild_cache.dir
-/home/pi/Projects/vehicle/build/CMakeFiles/edit_cache.dir
-/home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir
