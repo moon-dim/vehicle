@@ -51,8 +51,9 @@ typedef struct device
 	
 	struct device *next;
 }device;
- 
- 
+
+extern device	*device_phead;
+
 device* PutLEDInLink(device *head);
 device* PutDhtInLink(device *head);
 device* PutBeeperInLink(device *head);

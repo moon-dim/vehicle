@@ -254,17 +254,7 @@ void *thread_cmd_ctl(void *thread_argv)
 	pthread_exit(NULL);
 }
 
-data *data_init(){
-	data *datas 	 	= (data*)malloc(sizeof(data));
-	datas->attributes 	= (attribute*)malloc(sizeof(attribute));
-	datas->mqtt 		= (mosquitto_ctx_t*)malloc(sizeof(mosquitto_ctx_t));
-	datas->mosquit		= NULL;
-	datas->device_phead = device_phead;
-	datas->cmd_phead	= cmd_phead;
-	datas->mqtt->connection = false;
-	datas->attributes->hand_ctl = false;
-	return datas;
-}
+
 
 
 void cleanup(void *thread_argv){

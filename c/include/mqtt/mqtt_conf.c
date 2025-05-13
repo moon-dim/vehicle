@@ -12,8 +12,9 @@
 #include <iniparser.h>
 #include <dictionary.h>
 #include "mqtt_conf.h"
+#include "data.h"
 
-void mqtt_init(data *datas){
+void mqtt_init(){
 
 	struct mosquitto **mosquit = &datas->mosquit;   //创建结构体指针mosquit，官方mosquitto库
     mosquitto_ctx_t  *mosquitto = datas->mqtt;

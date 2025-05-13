@@ -25,6 +25,8 @@ typedef struct cmd
 	struct cmd *next;
 }cmd;
  
+extern cmd	*cmd_phead;
+
 //struct cmd* putVoiceInLink(struct cmd *head);
 cmd* PutFireInLink(cmd *head);
 
