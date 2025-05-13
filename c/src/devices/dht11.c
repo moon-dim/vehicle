@@ -50,8 +50,8 @@ void* dht_read_status()
 	res[1] = ((data >> 24) & 0xff);						 //Êª¶È
 	return (void*)res;
 }
- 
- 
+
+
 device dht11 = {
 		.device_name = DHT_NAME,
 		.init = dht_init,
@@ -59,9 +59,8 @@ device dht11 = {
 		.read_status = dht_read_status,
 };
  
-device* PutDhtInLink(device *head)
+void PutDhtInLink()
 {	   		
-	dht11.next = head->next;
-	head->next = &dht11;	
-	return head;
+	dht11.next = device_phead->next;
+	device_phead->next = &dht11;
 }

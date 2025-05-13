@@ -6,17 +6,21 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # 定义关键路径变量
-set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/source)   # 源文件目录
-set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/include)         # 头文件目录
-set(LIB_DIR ${CMAKE_SOURCE_DIR}/src/lib)                 # 库文件目录
-set(ETC_DIR ${CMAKE_SOURCE_DIR}/etc)                     # 配置文件目录
+set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/c/src)   # 源文件目录
+set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/c/include)      # 头文件目录
+set(LIB_DIR ${CMAKE_SOURCE_DIR}/python/libs)        # 库文件目录
+
+# 查找Python3开发环境
+find_package(Python3 COMPONENTS Development REQUIRED)
 
 # 添加头文件搜索路径
 include_directories(
   ${INCLUDE_DIR}
+  ${Python3_INCLUDE_DIRS}
   /usr/include/cjson
   /usr/include/iniparser
-) 
+)
+
 # 自动收集所有源文件
 file(GLOB_RECURSE SOURCES "${PROJECT_SOURCE_DIR}/*.c")
 

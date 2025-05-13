@@ -40,9 +40,8 @@ device sg = {
 	.read_status = sg_read_status
 };
 
-device* PutSGInLink(device *head)
+void PutSGInLink()
 {	
-	sg.next = head->next;
-	head->next = &sg;
-	return head;
+	sg.next = device_phead->next;
+	device_phead->next = &sg;
 }

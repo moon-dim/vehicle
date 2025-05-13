@@ -34,9 +34,8 @@ device beeper = {
 	.read_status = beeper_read_status
 };
 
-device* PutBeeperInLink(device *head)
+void PutBeeperInLink()
 {	
-	beeper.next = head->next;
-	head->next = &beeper;
-	return head;
+	beeper.next = device_phead->next;
+	device_phead->next = &beeper;
 }

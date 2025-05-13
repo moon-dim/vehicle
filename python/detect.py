@@ -21,6 +21,8 @@ import cv2
 import subprocess
 import mediapipe as mp
 
+import c_utils
+
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
@@ -62,8 +64,6 @@ def run(model: str, min_detection_confidence: float,
     '-r', '30'
     '-i', '-',
     '-c:v', 'libx264',
-    '-preset', 'ultrafast',
-    '-tune', 'zerolatency',
     '-f', 'flv',
     'rtmp://47.93.33.13/live/stream'
   ]
@@ -77,8 +77,6 @@ def run(model: str, min_detection_confidence: float,
   font_size = 1
   font_thickness = 1
   fps_avg_frame_count = 10
-
-  iii = 1
 
   def save_result(result: vision.FaceDetectorResult, unused_output_image: mp.Image,
                   timestamp_ms: int):
@@ -126,8 +124,12 @@ def run(model: str, min_detection_confidence: float,
                 font_size, text_color, font_thickness, cv2.LINE_AA)
 
     if DETECTION_RESULT:
-        # print(DETECTION_RESULT)
-        current_frame = visualize(current_frame, DETECTION_RESULT)
+      # print(DETECTION_RESULT)
+      current_frame = visualize(current_frame, DETECTION_RESULT)
+      send_to_c(1)
+    else :
+      send_to_c(0)
+    print(get_from_c())
 
     proc.stdin.write(current_frame.tobytes())
     # cv2.imshow("face",current_frame)

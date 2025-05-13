@@ -96,11 +96,10 @@ device led[3] = {
     },
 };
  
-device* PutLEDInLink(device *head)
+void PutLEDInLink()
 {
 	for(int i = 0; i < 3; ++i){	
-        led[i].next = head->next;		
-        head->next = &led[i];	
+        led[i].next = device_phead->next;		
+        device_phead->next = &led[i];	
     }
-	return head;
 }

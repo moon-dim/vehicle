@@ -73,9 +73,8 @@ device pressure = {
 	.read_status = pressure_read_status
 };
 
-device* PutPressureInLink(device *head)
+void PutPressureInLink()
 {	
-	pressure.next = head->next;
-	head->next = &pressure;
-	return head;
+	pressure.next = device_phead->next;
+	device_phead->next = &pressure;
 }

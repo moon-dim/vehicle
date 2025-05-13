@@ -1,5 +1,22 @@
 {
     "files.associations": {
-        "public_data.h": "c"
+        "public_data.h": "c",
+        "zlog.h": "c",
+        "tuple": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "ranges": "c",
+        "span": "c",
+        "alignedvector3": "c",
+        "string.h": "c",
+        "mosquitto.h": "c",
+        "thread.h": "c",
+        "find_link.h": "c",
+        "python.h": "c",
+        "device_fac.h": "c",
+        "errno.h": "c",
+        "cmd_fac.h": "c",
+        "stdio.h": "c"
     }
 }
