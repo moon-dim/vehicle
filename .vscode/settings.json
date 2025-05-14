@@ -18,6 +18,9 @@
         "errno.h": "c",
         "cmd_fac.h": "c",
         "stdio.h": "c",
-        "pthread.h": "c"
+        "pthread.h": "c",
+        "random": "c",
+        "select.h": "c",
+        "struct_timeval.h": "c"
     }
 }

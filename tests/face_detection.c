@@ -9,11 +9,15 @@
 
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include <pthread.h>
 #include "public_data.h"
 #include "cmd_fac.h"
 #include "device_fac.h"
 #include "mqtt_conf.h"
+#include <sys/select.h>
 
+
+PyObject *pModule, *pFunc, *pArgs;
 void py_init()
 {
     Py_Initialize();
@@ -27,47 +31,70 @@ void py_final()
     Py_Finalize();
 }
 
-void py_start()
+void *py_start()
 {
-    PyObject *pModule = PyImport_ImportModule("detect"); //加载python文件
-    if (!pModule)
-    {
-        PyErr_Print();
-        printf("Error: failed to load module\n");
-        goto FAILED_MODULE; //goto的意思就是如果运行到这里就直接跳转到FAILED_MODULE
-    }
-    PyObject *pFunc = PyObject_GetAttrString(pModule, "run"); //加载python文件中的对应函数
-    if (!pFunc)
-    {
-        PyErr_Print();
-        printf("Error: failed to load function\n");
-        goto FAILED_FUNC;
-    }
-    PyObject *pArgs = Py_BuildValue("sddiii","models/detector.tflite", 0.85, 0.5, 0, 640, 480);
+    printf("5\n");
+    //Py_BEGIN_ALLOW_THREADS
+    printf("6\n");
+    
+    PyObject_CallObject(pFunc, pArgs);
+    printf("7\n");
 
-    PyObject *pValue = PyObject_CallObject(pFunc, pArgs);
-    if (!pValue)
-    {
-        PyErr_Print();
-        printf("Error: function call failed\n");
-        goto FAILED_VALUE;
+    //Py_END_ALLOW_THREADS
+
+    py_final();
+    pthread_exit(NULL);
+}
+
+void *tmp(){
+    while(1){
+        printf("11111111\n\n");
+       sleep(2);
     }
- 
-FAILED_RESULT:
-    Py_DECREF(pValue);
-FAILED_VALUE:
-    Py_DECREF(pFunc);
-FAILED_FUNC:
-    Py_DECREF(pModule);
-FAILED_MODULE:
-    return;
+}
+
+void *tmp2(){
+    while(1){
+        printf("22222222\n");
+        sleep(3);
+    }
 }
 
 int main(){
     py_init();
+    pthread_t tid1;
+    //pthread_t tid2;
+	pthread_t tid3;
+    //py_start();
 
-	//人脸检测线程
-	py_start();
+
+    printf("1\n");
+    pModule = PyImport_ImportModule("detect"); //加载python文件
+
+    printf("2\n");
+
+    pFunc = PyObject_GetAttrString(pModule, "thread_create"); //加载python文件中的对应函数
+
+    printf("3\n");
+
+    pArgs = Py_BuildValue("sddiii","models/detector.tflite", 0.85, 0.5, 0, 640, 480);
+    printf("4\n");
+
+
+    pthread_create(&tid3, NULL, py_start, NULL);
+    printf("Thread worker3 tid[%lu] created ok\n", tid3);
+
+	pthread_create(&tid1, NULL, tmp, NULL);
+    printf("Thread worker3 tid[%lu] created ok\n", tid1);
+
+    // pthread_create(&tid2, NULL, tmp2, NULL);
+    // printf("Thread worker3 tid[%lu] created ok\n", tid2);
+
 	
-	py_final();
+	pthread_join(tid3,NULL);
+    pthread_join(tid1,NULL);
+    // pthread_join(tid2,NULL);
+	
+	
+	//py_final();
 }

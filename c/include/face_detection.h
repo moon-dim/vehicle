@@ -5,6 +5,6 @@
 
 void py_init();
 void py_final();
-void py_start();
+void *py_start();
 
 #endif
