@@ -31,7 +31,7 @@ void *thread_get_data()
 		//读取压力传感器数据
 		device_pfind = findDEVICEinLink(PRESSURE_NAME);
 		attribute_ptr->pressure = *(float*)device_pfind->read_status();
-		printf("%.2f\n",attribute_ptr->pressure);
+		//printf("%.2f\n",attribute_ptr->pressure);
 
 		//读取温湿度数据
 		device_pfind = findDEVICEinLink(DHT_NAME);
@@ -63,7 +63,7 @@ void *thread_cmd_ctl()
 		//火灾
 		cmd_pfind = findCMDinLink(FIRE_CONTROL_NAME);
 		cmd_pfind->cmd_handler();
-		sleep(1);
+		sleep(2);
 	}
 	//结束工作
 	device_pfind = findDEVICEinLink(LED_GREEN_NAME);

@@ -14,7 +14,7 @@
 #include "cmd_fac.h"
 
 #define buffsize 1024
-#define MQTT_INI_PATH "../etc/mqtt_conf.ini"   	 	//mqtt配置文件的路径
+#define MQTT_INI_PATH "/home/pi/Projects/vehicle/c/etc/mqtt_conf.ini"   	 	//mqtt配置文件的路径
 
 typedef struct mosquitto_inf
 {
@@ -50,6 +50,6 @@ void mqtt_subscribe_callback (struct mosquitto *mosquit, void *obj, int mid, int
 void mqtt_recv_message_callback(struct mosquitto *mosquit,void *obj, const struct mosquitto_message *msg);
 void mqtt_connect_callback(struct mosquitto *mosquit, void *obj, int rc);
 void mqtt_disconnect_callback( struct mosquitto *mosq, void *obj, int rc);
-int mqtt_conf_parse(char *path_ini);
+int mqtt_conf_parse();
 
 #endif

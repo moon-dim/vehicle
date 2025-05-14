@@ -20,12 +20,10 @@ int main()
 {
 	pthread_t tid1;
 	pthread_t tid2;
+	pthread_t tid3;
 
 	//初始化系统
 	__init__();
-	
-	//启动人脸检测
-	py_start();
 
 	//执行指令线程
     pthread_create(&tid1, NULL, thread_cmd_ctl, NULL);
@@ -34,9 +32,15 @@ int main()
 	//采集数据线程
     pthread_create(&tid2, NULL, thread_get_data, NULL);
     printf("Thread worker2 tid[%lu] created ok\n", tid2);
+
+	//人脸检测线程
+	pthread_create(&tid3, NULL, py_start, NULL);
+    printf("Thread worker3 tid[%lu] created ok\n", tid3);
 	
 	pthread_join(tid1,NULL);
 	pthread_join(tid2,NULL);
+
+	py_final();
  
 	return 0;
 }

@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/common/__init__.c.o -c /home/pi/Projects/vehicle/c/src/common/__init__.c",
+  "file": "/home/pi/Projects/vehicle/c/src/common/__init__.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/common/find_link.c.o -c /home/pi/Projects/vehicle/c/src/common/find_link.c",
+  "file": "/home/pi/Projects/vehicle/c/src/common/find_link.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o -c /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c",
+  "file": "/home/pi/Projects/vehicle/c/src/common/mqtt_conf.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/common/thread.c.o -c /home/pi/Projects/vehicle/c/src/common/thread.c",
+  "file": "/home/pi/Projects/vehicle/c/src/common/thread.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o -c /home/pi/Projects/vehicle/c/src/devices/beeper.c",
+  "file": "/home/pi/Projects/vehicle/c/src/devices/beeper.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o -c /home/pi/Projects/vehicle/c/src/devices/dht11.c",
+  "file": "/home/pi/Projects/vehicle/c/src/devices/dht11.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/devices/led.c.o -c /home/pi/Projects/vehicle/c/src/devices/led.c",
+  "file": "/home/pi/Projects/vehicle/c/src/devices/led.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o -c /home/pi/Projects/vehicle/c/src/devices/pressure.c",
+  "file": "/home/pi/Projects/vehicle/c/src/devices/pressure.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o -c /home/pi/Projects/vehicle/c/src/devices/sg90.c",
+  "file": "/home/pi/Projects/vehicle/c/src/devices/sg90.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o -c /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c",
+  "file": "/home/pi/Projects/vehicle/c/src/face_detection/face_detection.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o -c /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c",
+  "file": "/home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/main.c.o -c /home/pi/Projects/vehicle/c/src/main.c",
+  "file": "/home/pi/Projects/vehicle/c/src/main.c"
+},
+{
+  "directory": "/home/pi/Projects/vehicle/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc  -I/home/pi/Projects/vehicle/c/include -I/usr/include/python3.9 -I/usr/include/cjson -I/usr/include/iniparser -g -std=gnu11 -o CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o -c /home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c",
+  "file": "/home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c"
+}
+]

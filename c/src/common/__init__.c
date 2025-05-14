@@ -4,20 +4,12 @@
 #include "mqtt_conf.h"
 #include "face_detection.h"
 
-struct mosquitto     *mosquit_ptr        = NULL;
-mosquitto_inf        *mosquit_inf_ptr    = NULL;
-attribute            *attribute_ptr      = NULL;
-cmd	                *cmd_phead          = NULL;
-device	            *device_phead       = NULL;
-
 void __init__()
 {
-    //初始化全局变量
-    mosquit_inf_ptr    = (mosquitto_inf*)malloc(sizeof(mosquitto_inf));
-    attribute_ptr      = (attribute*)malloc(sizeof(attribute));
-    cmd_phead          = (cmd*)malloc(sizeof(cmd));
-    device_phead       = (device*)malloc(sizeof(device));
 
+    //初始化python解释器
+    py_init();
+    
     //初始化wiringPi库
 	wiringPiSetup();
 
@@ -30,8 +22,6 @@ void __init__()
     //初始化MQTTQ
     mqtt_init();
 
-    //初始化python解释器
-    py_init();
 }
 
 //初始化全部设备

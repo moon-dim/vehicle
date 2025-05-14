@@ -15,7 +15,7 @@ typedef struct attribute{
     int     humidity;           //湿度
     float   temperature;        //温度
     float   pressure;           //压力
-    bool    face_detection;     //人脸检测
+    int     face_detection;     //人脸检测
     bool    led_green;          //工作灯
     bool    led_yellow;         //警报灯
     bool    led_red;            //错误灯
@@ -29,6 +29,7 @@ typedef struct attribute{
 
 extern attribute            *attribute_ptr;
 
+void public_data_init();
 void __init__();
 
 #endif

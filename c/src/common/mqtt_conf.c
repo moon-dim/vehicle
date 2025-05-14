@@ -24,7 +24,7 @@ void mqtt_init(){
     int rv = 0;
     int mid = 0;
 	//读取MQTT配置文件
-	rv = mqtt_conf_parse(MQTT_INI_PATH);
+	rv = mqtt_conf_parse();
     if (rv < 0)
     {
         printf("mqtt conf parse success!\n");
@@ -119,7 +119,7 @@ void mqtt_publish()
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
     json_string = cJSON_Print(value);
-    printf("%s\n", json_string);
+    //printf("%s\n", json_string);
 
     /**************************发布数据*****************************/
     rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
@@ -163,11 +163,11 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     value = cJSON_GetObjectItem(root, "params");
     if (value == NULL)
     {
-        printf("GetObjec error\n");
+        //printf("GetObjec error\n");
         return;
     }
     //把数据转成 字符串输出
-    printf("params:%s\n", cJSON_Print(value));
+    //printf("params:%s\n", cJSON_Print(value));
 
     ident_value = cJSON_GetObjectItem(value, GAS_CONTROL_NAME);
     total_data = cJSON_Print(ident_value);
@@ -205,7 +205,7 @@ void mqtt_disconnect_callback(struct mosquitto *mosq, void *obj, int rc)
 }
 
 /********************************本函数将用于把配置文件的参数传递到结构体里面**************************************/
-int mqtt_conf_parse(char *path_ini)
+int mqtt_conf_parse()
 {
     dictionary *ini = NULL;
     const char *host;
@@ -223,13 +223,13 @@ int mqtt_conf_parse(char *path_ini)
     const char *id;
     const char *version;
 
-    if (!path_ini || !mosquit_inf_ptr)
+    if (!mosquit_inf_ptr)
     {
         printf("%s\n", strerror(errno));
         return -1;
     }
 
-    ini = iniparser_load(path_ini);
+    ini = iniparser_load(MQTT_INI_PATH);
     if (ini == NULL)
     {
         printf("inipar failure\n");

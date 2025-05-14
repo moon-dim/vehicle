@@ -26,6 +26,11 @@ void public_data_init(){
 }
 
 // Python接口函数
+static PyObject* init_c(PyObject* self) {
+    public_data_init();
+    Py_RETURN_NONE;
+}
+
 static PyObject* send_to_c(PyObject* self, PyObject* args) {
     int value = false;
     PyArg_ParseTuple(args, "i", &value);
@@ -46,7 +51,8 @@ static PyObject* get_from_c(PyObject* self) {
 
 // 模块方法表
 static PyMethodDef C_utilsMethods[] = {
-    {"send_to_c", (PyCFunction)send_to_c, METH_VARARGS, "Set data to C global"},
+    {"init_c", (PyCFunction)init_c, METH_NOARGS, "Set data of C global"},
+    {"send_to_c", (PyCFunction)send_to_c, METH_VARARGS, "Send data to C global"},
     {"get_from_c", (PyCFunction)get_from_c, METH_NOARGS, "Get data from C global"},
     {NULL, NULL, 0, NULL}
 };

@@ -49,7 +49,7 @@ def run(model: str, min_detection_confidence: float,
     width: The width of the frame captured from the camera.
     height: The height of the frame captured from the camera.
   """
-
+  c_utils.init_c()
   # Start capturing video input from the camera
   cap = cv2.VideoCapture(camera_id, cv2.CAP_V4L2)
   cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)

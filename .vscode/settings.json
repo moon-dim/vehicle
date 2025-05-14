@@ -17,6 +17,7 @@
         "device_fac.h": "c",
         "errno.h": "c",
         "cmd_fac.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "pthread.h": "c"
     }
 }
