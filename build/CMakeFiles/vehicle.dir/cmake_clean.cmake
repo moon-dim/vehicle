@@ -13,7 +13,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o"
   "CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o"
   "CMakeFiles/vehicle.dir/c/src/main.c.o"
-  "CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o"
 )
 
 # Per-language clean rules from dependency scanning.

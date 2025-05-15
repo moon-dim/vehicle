@@ -64,8 +64,6 @@ void *tmp(){
 
 int main(){
 
-    printf("attribute_ptr address of address ccccccccccc1:%d\n\n",&attribute_ptr);
-
     py_init();
     pthread_t tid1;
     pthread_t tid2;

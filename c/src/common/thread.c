@@ -5,14 +5,14 @@
 #include "find_link.h"
 #include "mqtt_conf.h"
 
-void *thread_get_data()
-{
+void *thread_get_data(){
 	device 		*device_pfind = NULL;
 	float 		*dht_data = (float*)malloc(sizeof(float)<<1);
 
 	while(true)
 	{
-		// //¶ÁÈ¡LEDºìµÆ×´Ì¬
+		
+		//¶ÁÈ¡LEDºìµÆ×´Ì¬
 		device_pfind = findDEVICEinLink(LED_RED_NAME);
 		attribute_ptr->led_red = *(int*)device_pfind->read_status();
 
@@ -51,15 +51,15 @@ void *thread_get_data()
 	pthread_exit(NULL);
 }
 
-void *thread_cmd_ctl()
-{
+void *thread_cmd_ctl(){
 	device 		*device_pfind = NULL;
 	cmd			*cmd_pfind = NULL;
-
+	
 	//¿ªÊ¼¹¤×÷
 	device_pfind = findDEVICEinLink(LED_GREEN_NAME);
 	device_pfind->open();
 	while(true){
+		
 		//»ðÔÖ
 		cmd_pfind = findCMDinLink(FIRE_CONTROL_NAME);
 		cmd_pfind->cmd_handler();

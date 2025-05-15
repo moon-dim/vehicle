@@ -142,6 +142,19 @@ vehicle/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/build
 .PHONY : vehicle/fast
 
+#=============================================================================
+# Target rules for targets named c_utils
+
+# Build rule for target.
+c_utils: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_utils
+.PHONY : c_utils
+
+# fast build rule for target.
+c_utils/fast:
+	$(MAKE) $(MAKESILENT) -f c/src/py_c_utils/CMakeFiles/c_utils.dir/build.make c/src/py_c_utils/CMakeFiles/c_utils.dir/build
+.PHONY : c_utils/fast
+
 c/src/common/__init__.o: c/src/common/__init__.c.o
 
 .PHONY : c/src/common/__init__.o
@@ -466,33 +479,6 @@ c/src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/c/src/main.c.s
 .PHONY : c/src/main.c.s
 
-c/src/py_c_utils/c_utilsmoudle.o: c/src/py_c_utils/c_utilsmoudle.c.o
-
-.PHONY : c/src/py_c_utils/c_utilsmoudle.o
-
-# target to build an object file
-c/src/py_c_utils/c_utilsmoudle.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o
-.PHONY : c/src/py_c_utils/c_utilsmoudle.c.o
-
-c/src/py_c_utils/c_utilsmoudle.i: c/src/py_c_utils/c_utilsmoudle.c.i
-
-.PHONY : c/src/py_c_utils/c_utilsmoudle.i
-
-# target to preprocess a source file
-c/src/py_c_utils/c_utilsmoudle.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.i
-.PHONY : c/src/py_c_utils/c_utilsmoudle.c.i
-
-c/src/py_c_utils/c_utilsmoudle.s: c/src/py_c_utils/c_utilsmoudle.c.s
-
-.PHONY : c/src/py_c_utils/c_utilsmoudle.s
-
-# target to generate assembly for a file
-c/src/py_c_utils/c_utilsmoudle.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.s
-.PHONY : c/src/py_c_utils/c_utilsmoudle.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -501,6 +487,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... c_utils"
 	@echo "... vehicle"
 	@echo "... c/src/common/__init__.o"
 	@echo "... c/src/common/__init__.i"
@@ -538,9 +525,6 @@ help:
 	@echo "... c/src/main.o"
 	@echo "... c/src/main.i"
 	@echo "... c/src/main.s"
-	@echo "... c/src/py_c_utils/c_utilsmoudle.o"
-	@echo "... c/src/py_c_utils/c_utilsmoudle.i"
-	@echo "... c/src/py_c_utils/c_utilsmoudle.s"
 .PHONY : help
 
 

@@ -8,24 +8,16 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "public_data.h"
-#include "cmd_fac.h"
-#include "device_fac.h"
-#include "mqtt_conf.h"
 
-struct mosquitto     *mosquit_ptr       = NULL;
-mosquitto_inf        *mosquit_inf_ptr   = NULL;
-attribute            *attribute_ptr     = NULL;
-cmd	                 *cmd_phead         = NULL;
-device	             *device_phead      = NULL;
-
-void public_data_init(){
-    mosquit_inf_ptr    = (mosquitto_inf*)malloc(sizeof(mosquitto_inf));
-    attribute_ptr      = (attribute*)malloc(sizeof(attribute));
-    cmd_phead          = (cmd*)malloc(sizeof(cmd));
-    device_phead       = (device*)malloc(sizeof(device));
-}
+attribute *attribute_ptr = NULL;
 
 // Python接口函数
+static PyObject* init_c(PyObject* self) {
+    attribute_ptr = (attribute*)malloc(sizeof(attribute));
+    printf("attribute_ptr init finish! address:%d\n\n\n",attribute_ptr);
+    Py_RETURN_NONE;
+}
+
 static PyObject* send_to_c(PyObject* self, PyObject* args) {
     int value = false;
     PyArg_ParseTuple(args, "i", &value);
@@ -46,7 +38,8 @@ static PyObject* get_from_c(PyObject* self) {
 
 // 模块方法表
 static PyMethodDef C_utilsMethods[] = {
-    {"send_to_c", (PyCFunction)send_to_c, METH_VARARGS, "Set data to C global"},
+    {"init_c", (PyCFunction)init_c, METH_NOARGS, "Set data of C global"},
+    {"send_to_c", (PyCFunction)send_to_c, METH_VARARGS, "Send data to C global"},
     {"get_from_c", (PyCFunction)get_from_c, METH_NOARGS, "Get data from C global"},
     {NULL, NULL, 0, NULL}
 };
@@ -61,6 +54,6 @@ static struct PyModuleDef c_utilsmodule  = {
 };
 
 // 模块初始化函数
-PyMODINIT_FUNC PyInit_c_utils(void) {
+PyMODINIT_FUNC PyInit_libc_utils(void) {
     return PyModule_Create(&c_utilsmodule);
 }

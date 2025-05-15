@@ -16,12 +16,13 @@
 import argparse
 import sys
 import time
+import threading
 
 import cv2
 import subprocess
 import mediapipe as mp
 
-import c_utils
+import libc_utils as c_utils
 
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -49,6 +50,8 @@ def run(model: str, min_detection_confidence: float,
     width: The width of the frame captured from the camera.
     height: The height of the frame captured from the camera.
   """
+
+  c_utils.init_c()
 
   # Start capturing video input from the camera
   cap = cv2.VideoCapture(camera_id, cv2.CAP_V4L2)
@@ -129,7 +132,7 @@ def run(model: str, min_detection_confidence: float,
       c_utils.send_to_c(1)
     else :
       c_utils.send_to_c(0)
-    print(c_utils.get_from_c())
+    # print(c_utils.get_from_c())
 
     proc.stdin.write(current_frame.tobytes())
     # cv2.imshow("face",current_frame)
@@ -137,11 +140,15 @@ def run(model: str, min_detection_confidence: float,
     # Stop the program if the ESC key is pressed.
     if cv2.waitKey(1) == 27:
       break
-    time.sleep(0.1)
 
   detector.close()
   cap.release()
   proc.stdin.close()
 
-if __name__ == "__main__":
-  run("models/detector.tflite", 0.8, 0.5, 0, 640, 480)
+def thread_create(model: str, min_detection_confidence: float,
+        min_suppression_threshold: float, camera_id: int, width: int,
+        height: int):
+  t = threading.Thread(target=run,
+                      args=(model,min_detection_confidence,min_suppression_threshold,camera_id,width,height))
+  t.start()
+  t.join()

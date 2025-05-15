@@ -16,7 +16,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/pi/Projects/vehicle/c/src/face_detection/face_detection.c" "/home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o"
   "/home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c" "/home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o"
   "/home/pi/Projects/vehicle/c/src/main.c" "/home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir/c/src/main.c.o"
-  "/home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c" "/home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -30,6 +29,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/pi/Projects/vehicle/build/c/src/py_c_utils/CMakeFiles/c_utils.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

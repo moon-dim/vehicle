@@ -1,3 +1,6 @@
 /home/pi/Projects/vehicle/build/CMakeFiles/rebuild_cache.dir
 /home/pi/Projects/vehicle/build/CMakeFiles/edit_cache.dir
 /home/pi/Projects/vehicle/build/CMakeFiles/vehicle.dir
+/home/pi/Projects/vehicle/build/c/src/py_c_utils/CMakeFiles/rebuild_cache.dir
+/home/pi/Projects/vehicle/build/c/src/py_c_utils/CMakeFiles/edit_cache.dir
+/home/pi/Projects/vehicle/build/c/src/py_c_utils/CMakeFiles/c_utils.dir

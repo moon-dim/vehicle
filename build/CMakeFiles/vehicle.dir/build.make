@@ -79,171 +79,158 @@ include CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/common/__init__.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/common/__init__.c.o: ../c/src/common/__init__.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vehicle.dir/c/src/common/__init__.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/__init__.c.o -c /home/pi/Projects/vehicle/c/src/common/__init__.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/__init__.c.o -c /home/pi/Projects/vehicle/c/src/common/__init__.c
 
 CMakeFiles/vehicle.dir/c/src/common/__init__.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/common/__init__.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/__init__.c > CMakeFiles/vehicle.dir/c/src/common/__init__.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/__init__.c > CMakeFiles/vehicle.dir/c/src/common/__init__.c.i
 
 CMakeFiles/vehicle.dir/c/src/common/__init__.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/common/__init__.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/__init__.c -o CMakeFiles/vehicle.dir/c/src/common/__init__.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/__init__.c -o CMakeFiles/vehicle.dir/c/src/common/__init__.c.s
 
 CMakeFiles/vehicle.dir/c/src/common/find_link.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/common/find_link.c.o: ../c/src/common/find_link.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/vehicle.dir/c/src/common/find_link.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/find_link.c.o -c /home/pi/Projects/vehicle/c/src/common/find_link.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/find_link.c.o -c /home/pi/Projects/vehicle/c/src/common/find_link.c
 
 CMakeFiles/vehicle.dir/c/src/common/find_link.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/common/find_link.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/find_link.c > CMakeFiles/vehicle.dir/c/src/common/find_link.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/find_link.c > CMakeFiles/vehicle.dir/c/src/common/find_link.c.i
 
 CMakeFiles/vehicle.dir/c/src/common/find_link.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/common/find_link.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/find_link.c -o CMakeFiles/vehicle.dir/c/src/common/find_link.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/find_link.c -o CMakeFiles/vehicle.dir/c/src/common/find_link.c.s
 
 CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o: ../c/src/common/mqtt_conf.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o -c /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.o -c /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c
 
 CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c > CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c > CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.i
 
 CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c -o CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/mqtt_conf.c -o CMakeFiles/vehicle.dir/c/src/common/mqtt_conf.c.s
 
 CMakeFiles/vehicle.dir/c/src/common/thread.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/common/thread.c.o: ../c/src/common/thread.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/vehicle.dir/c/src/common/thread.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/thread.c.o -c /home/pi/Projects/vehicle/c/src/common/thread.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/common/thread.c.o -c /home/pi/Projects/vehicle/c/src/common/thread.c
 
 CMakeFiles/vehicle.dir/c/src/common/thread.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/common/thread.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/thread.c > CMakeFiles/vehicle.dir/c/src/common/thread.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/common/thread.c > CMakeFiles/vehicle.dir/c/src/common/thread.c.i
 
 CMakeFiles/vehicle.dir/c/src/common/thread.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/common/thread.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/thread.c -o CMakeFiles/vehicle.dir/c/src/common/thread.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/common/thread.c -o CMakeFiles/vehicle.dir/c/src/common/thread.c.s
 
 CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o: ../c/src/devices/beeper.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o -c /home/pi/Projects/vehicle/c/src/devices/beeper.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/beeper.c.o -c /home/pi/Projects/vehicle/c/src/devices/beeper.c
 
 CMakeFiles/vehicle.dir/c/src/devices/beeper.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/devices/beeper.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/beeper.c > CMakeFiles/vehicle.dir/c/src/devices/beeper.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/beeper.c > CMakeFiles/vehicle.dir/c/src/devices/beeper.c.i
 
 CMakeFiles/vehicle.dir/c/src/devices/beeper.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/devices/beeper.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/beeper.c -o CMakeFiles/vehicle.dir/c/src/devices/beeper.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/beeper.c -o CMakeFiles/vehicle.dir/c/src/devices/beeper.c.s
 
 CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o: ../c/src/devices/dht11.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o -c /home/pi/Projects/vehicle/c/src/devices/dht11.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/dht11.c.o -c /home/pi/Projects/vehicle/c/src/devices/dht11.c
 
 CMakeFiles/vehicle.dir/c/src/devices/dht11.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/devices/dht11.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/dht11.c > CMakeFiles/vehicle.dir/c/src/devices/dht11.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/dht11.c > CMakeFiles/vehicle.dir/c/src/devices/dht11.c.i
 
 CMakeFiles/vehicle.dir/c/src/devices/dht11.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/devices/dht11.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/dht11.c -o CMakeFiles/vehicle.dir/c/src/devices/dht11.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/dht11.c -o CMakeFiles/vehicle.dir/c/src/devices/dht11.c.s
 
 CMakeFiles/vehicle.dir/c/src/devices/led.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/devices/led.c.o: ../c/src/devices/led.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/vehicle.dir/c/src/devices/led.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/led.c.o -c /home/pi/Projects/vehicle/c/src/devices/led.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/led.c.o -c /home/pi/Projects/vehicle/c/src/devices/led.c
 
 CMakeFiles/vehicle.dir/c/src/devices/led.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/devices/led.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/led.c > CMakeFiles/vehicle.dir/c/src/devices/led.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/led.c > CMakeFiles/vehicle.dir/c/src/devices/led.c.i
 
 CMakeFiles/vehicle.dir/c/src/devices/led.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/devices/led.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/led.c -o CMakeFiles/vehicle.dir/c/src/devices/led.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/led.c -o CMakeFiles/vehicle.dir/c/src/devices/led.c.s
 
 CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o: ../c/src/devices/pressure.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o -c /home/pi/Projects/vehicle/c/src/devices/pressure.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/pressure.c.o -c /home/pi/Projects/vehicle/c/src/devices/pressure.c
 
 CMakeFiles/vehicle.dir/c/src/devices/pressure.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/devices/pressure.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/pressure.c > CMakeFiles/vehicle.dir/c/src/devices/pressure.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/pressure.c > CMakeFiles/vehicle.dir/c/src/devices/pressure.c.i
 
 CMakeFiles/vehicle.dir/c/src/devices/pressure.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/devices/pressure.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/pressure.c -o CMakeFiles/vehicle.dir/c/src/devices/pressure.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/pressure.c -o CMakeFiles/vehicle.dir/c/src/devices/pressure.c.s
 
 CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o: ../c/src/devices/sg90.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o -c /home/pi/Projects/vehicle/c/src/devices/sg90.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o -c /home/pi/Projects/vehicle/c/src/devices/sg90.c
 
 CMakeFiles/vehicle.dir/c/src/devices/sg90.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/devices/sg90.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/sg90.c > CMakeFiles/vehicle.dir/c/src/devices/sg90.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/devices/sg90.c > CMakeFiles/vehicle.dir/c/src/devices/sg90.c.i
 
 CMakeFiles/vehicle.dir/c/src/devices/sg90.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/devices/sg90.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/sg90.c -o CMakeFiles/vehicle.dir/c/src/devices/sg90.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/devices/sg90.c -o CMakeFiles/vehicle.dir/c/src/devices/sg90.c.s
 
 CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o: ../c/src/face_detection/face_detection.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o -c /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o -c /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c
 
 CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c > CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c > CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.i
 
 CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c -o CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/face_detection/face_detection.c -o CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.s
 
 CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o: ../c/src/fire_ctl/fire_ctl.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o -c /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o -c /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c
 
 CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c > CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c > CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.i
 
 CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c -o CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/fire_ctl/fire_ctl.c -o CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.s
 
 CMakeFiles/vehicle.dir/c/src/main.c.o: CMakeFiles/vehicle.dir/flags.make
 CMakeFiles/vehicle.dir/c/src/main.c.o: ../c/src/main.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/vehicle.dir/c/src/main.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/main.c.o -c /home/pi/Projects/vehicle/c/src/main.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/main.c.o -c /home/pi/Projects/vehicle/c/src/main.c
 
 CMakeFiles/vehicle.dir/c/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/main.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/main.c > CMakeFiles/vehicle.dir/c/src/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/main.c > CMakeFiles/vehicle.dir/c/src/main.c.i
 
 CMakeFiles/vehicle.dir/c/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/main.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/main.c -o CMakeFiles/vehicle.dir/c/src/main.c.s
-
-CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o: CMakeFiles/vehicle.dir/flags.make
-CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o: ../c/src/py_c_utils/c_utilsmoudle.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o -c /home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c
-
-CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.i"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c > CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.i
-
-CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.s"
-	/usr/bin/aarch64-linux-gnu-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/py_c_utils/c_utilsmoudle.c -o CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/Projects/vehicle/c/src/main.c -o CMakeFiles/vehicle.dir/c/src/main.c.s
 
 # Object files for target vehicle
 vehicle_OBJECTS = \
@@ -258,8 +245,7 @@ vehicle_OBJECTS = \
 "CMakeFiles/vehicle.dir/c/src/devices/sg90.c.o" \
 "CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o" \
 "CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o" \
-"CMakeFiles/vehicle.dir/c/src/main.c.o" \
-"CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o"
+"CMakeFiles/vehicle.dir/c/src/main.c.o"
 
 # External object files for target vehicle
 vehicle_EXTERNAL_OBJECTS =
@@ -276,11 +262,11 @@ vehicle_EXTERNAL_OBJECTS =
 ../bin/vehicle: CMakeFiles/vehicle.dir/c/src/face_detection/face_detection.c.o
 ../bin/vehicle: CMakeFiles/vehicle.dir/c/src/fire_ctl/fire_ctl.c.o
 ../bin/vehicle: CMakeFiles/vehicle.dir/c/src/main.c.o
-../bin/vehicle: CMakeFiles/vehicle.dir/c/src/py_c_utils/c_utilsmoudle.c.o
 ../bin/vehicle: CMakeFiles/vehicle.dir/build.make
+../bin/vehicle: ../libs/libc_utils.so
 ../bin/vehicle: /usr/lib/aarch64-linux-gnu/libpython3.9.so
 ../bin/vehicle: CMakeFiles/vehicle.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable ../bin/vehicle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable ../bin/vehicle"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vehicle.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

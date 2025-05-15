@@ -4,8 +4,16 @@
 #include "mqtt_conf.h"
 #include "face_detection.h"
 
+struct mosquitto     *mosquit_ptr       = NULL;
+mosquitto_inf        *mosquit_inf_ptr   = NULL;
+cmd	                 *cmd_phead         = NULL;
+device	             *device_phead      = NULL;
+
 void __init__()
 {
+    mosquit_inf_ptr    = (mosquitto_inf*)malloc(sizeof(mosquitto_inf));
+    cmd_phead          = (cmd*)malloc(sizeof(cmd));
+    device_phead       = (device*)malloc(sizeof(device));
 
     //≥ı ºªØpythonΩ‚ Õ∆˜
     py_init();

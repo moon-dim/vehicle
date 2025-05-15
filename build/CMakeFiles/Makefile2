@@ -73,32 +73,52 @@ CMAKE_BINARY_DIR = /home/pi/Projects/vehicle/build
 
 # The main recursive "all" target.
 all: CMakeFiles/vehicle.dir/all
+all: c/src/py_c_utils/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: c/src/py_c_utils/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/vehicle.dir/clean
+clean: c/src/py_c_utils/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory c/src/py_c_utils
+
+# Recursive "all" directory target.
+c/src/py_c_utils/all: c/src/py_c_utils/CMakeFiles/c_utils.dir/all
+
+.PHONY : c/src/py_c_utils/all
+
+# Recursive "preinstall" directory target.
+c/src/py_c_utils/preinstall:
+
+.PHONY : c/src/py_c_utils/preinstall
+
+# Recursive "clean" directory target.
+c/src/py_c_utils/clean: c/src/py_c_utils/CMakeFiles/c_utils.dir/clean
+
+.PHONY : c/src/py_c_utils/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/vehicle.dir
 
 # All Build rule for target.
-CMakeFiles/vehicle.dir/all:
+CMakeFiles/vehicle.dir/all: c/src/py_c_utils/CMakeFiles/c_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target vehicle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target vehicle"
 .PHONY : CMakeFiles/vehicle.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vehicle.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Projects/vehicle/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Projects/vehicle/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vehicle.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Projects/vehicle/build/CMakeFiles 0
 .PHONY : CMakeFiles/vehicle.dir/rule
@@ -112,6 +132,33 @@ vehicle: CMakeFiles/vehicle.dir/rule
 CMakeFiles/vehicle.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle.dir/build.make CMakeFiles/vehicle.dir/clean
 .PHONY : CMakeFiles/vehicle.dir/clean
+
+#=============================================================================
+# Target rules for target c/src/py_c_utils/CMakeFiles/c_utils.dir
+
+# All Build rule for target.
+c/src/py_c_utils/CMakeFiles/c_utils.dir/all:
+	$(MAKE) $(MAKESILENT) -f c/src/py_c_utils/CMakeFiles/c_utils.dir/build.make c/src/py_c_utils/CMakeFiles/c_utils.dir/depend
+	$(MAKE) $(MAKESILENT) -f c/src/py_c_utils/CMakeFiles/c_utils.dir/build.make c/src/py_c_utils/CMakeFiles/c_utils.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Projects/vehicle/build/CMakeFiles --progress-num=1,2 "Built target c_utils"
+.PHONY : c/src/py_c_utils/CMakeFiles/c_utils.dir/all
+
+# Build rule for subdir invocation for target.
+c/src/py_c_utils/CMakeFiles/c_utils.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Projects/vehicle/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c/src/py_c_utils/CMakeFiles/c_utils.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Projects/vehicle/build/CMakeFiles 0
+.PHONY : c/src/py_c_utils/CMakeFiles/c_utils.dir/rule
+
+# Convenience name for target.
+c_utils: c/src/py_c_utils/CMakeFiles/c_utils.dir/rule
+
+.PHONY : c_utils
+
+# clean rule for target.
+c/src/py_c_utils/CMakeFiles/c_utils.dir/clean:
+	$(MAKE) $(MAKESILENT) -f c/src/py_c_utils/CMakeFiles/c_utils.dir/build.make c/src/py_c_utils/CMakeFiles/c_utils.dir/clean
+.PHONY : c/src/py_c_utils/CMakeFiles/c_utils.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

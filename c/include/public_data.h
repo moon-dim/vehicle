@@ -27,9 +27,8 @@ typedef struct attribute{
     
 }attribute;
 
-extern attribute            *attribute_ptr;
+extern attribute *attribute_ptr;
 
-void public_data_init();
 void __init__();
 
 #endif

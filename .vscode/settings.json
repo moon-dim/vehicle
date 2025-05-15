@@ -21,6 +21,10 @@
         "pthread.h": "c",
         "random": "c",
         "select.h": "c",
-        "struct_timeval.h": "c"
+        "struct_timeval.h": "c",
+        "face_detection.h": "c",
+        "stdbool.h": "c",
+        "stdatomic.h": "c",
+        "mqtt_conf.h": "c"
     }
 }
