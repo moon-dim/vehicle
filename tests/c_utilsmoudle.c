@@ -7,27 +7,17 @@
  */
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include <unistd.h>
 #include "public_data.h"
-#include "cmd_fac.h"
-#include "device_fac.h"
-#include "mqtt_conf.h"
 
-struct mosquitto     *mosquit_ptr       = NULL;
-mosquitto_inf        *mosquit_inf_ptr   = NULL;
-attribute            *attribute_ptr     = NULL;
-cmd	                 *cmd_phead         = NULL;
-device	             *device_phead      = NULL;
-
-void public_data_init(){
-    mosquit_inf_ptr    = (mosquitto_inf*)malloc(sizeof(mosquitto_inf));
-    attribute_ptr      = (attribute*)malloc(sizeof(attribute));
-    cmd_phead          = (cmd*)malloc(sizeof(cmd));
-    device_phead       = (device*)malloc(sizeof(device));
-}
+attribute *attribute_ptr = NULL;
 
 // Python½Ó¿Úº¯Êý
 static PyObject* init_c(PyObject* self) {
-    public_data_init();
+    printf("attribute_ptr address of address:%d\n\n",&attribute_ptr);
+    attribute_ptr = (attribute*)malloc(sizeof(attribute));
+    printf("attribute_ptr address of address:%d\n\n",&attribute_ptr);
+    printf("attribute_ptr init!!!!!!!! address:%d\n\n\n",attribute_ptr);
     Py_RETURN_NONE;
 }
 
