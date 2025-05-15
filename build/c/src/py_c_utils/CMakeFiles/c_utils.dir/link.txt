@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -shared -Wl,-soname,libc_utils.so -o ../../../../libs/libc_utils.so CMakeFiles/c_utils.dir/c_utilsmoudle.c.o 
