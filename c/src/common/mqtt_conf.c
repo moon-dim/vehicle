@@ -94,6 +94,8 @@ void mqtt_publish()
     int             mid;
     int             rv;
     char            *json_string;
+    char            tmp[10];
+    int             tmp_face;
     
     if(!mosquit_inf_ptr->connection)return;
     /*******************创建json对象*********************/
@@ -105,10 +107,22 @@ void mqtt_publish()
     cJSON_AddItemToObject(value, "method", cJSON_CreateString(mosquit_inf_ptr->method));
     cJSON_AddItemToObject(value, "id", cJSON_CreateString(mosquit_inf_ptr->id));
     cJSON_AddItemToObject(value, "params", items);
-    cJSON_AddItemToObject(items, TEMPERATRUE_NAME, cJSON_CreateNumber(attribute_ptr->temperature));
+
+    sprintf(tmp, "%.2f", attribute_ptr->temperature);
+    printf("tmptem: %s\n",tmp);
+    cJSON_AddItemToObject(items, TEMPERATRUE_NAME, cJSON_CreateString(tmp));
+
     cJSON_AddItemToObject(items, HUMIDITY_NAME, cJSON_CreateNumber(attribute_ptr->humidity));
-    cJSON_AddItemToObject(items, GAS_CONTROL_NAME, cJSON_CreateNumber(attribute_ptr->gas));
-    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(attribute_ptr->face_detection));
+
+    sprintf(tmp, "%.2f", attribute_ptr->gas);
+    printf("tmpgas: %s\n",tmp);
+    cJSON_AddItemToObject(items, GAS_CONTROL_NAME, cJSON_CreateString(tmp));
+
+    sem_wait(sem);
+    tmp_face = attribute_ptr->face_detection;
+    sem_post(sem);
+    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(tmp_face));
+
     cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateNumber(attribute_ptr->beeper));
     cJSON_AddItemToObject(items, LED_GREEN_NAME, cJSON_CreateNumber(attribute_ptr->led_green));
     cJSON_AddItemToObject(items, LED_RED_NAME, cJSON_CreateNumber(attribute_ptr->led_red));

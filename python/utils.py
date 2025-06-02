@@ -20,7 +20,7 @@ MARGIN = 1  # pixels
 ROW_SIZE = 0  # pixels
 FONT_SIZE = 1
 FONT_THICKNESS = 1
-TEXT_COLOR = (0, 0, 0)  # black
+TEXT_COLOR = (255, 255, 255)
 
 
 def visualize(

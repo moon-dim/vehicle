@@ -2,6 +2,7 @@
 #define __DEVICEFAC_H__
  
 #include <wiringPi.h>
+#include <wiringPiI2C.h>
 #include <stddef.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -10,15 +11,13 @@
 #include <stdbool.h>
 
 #define DHT_GPIO 			1
-#define PRESSURE_GPIO 		2
-#define PRESSURE_SCK 		3
-#define BEEPER_GPIO 		4
-#define SG_GPIO				6
-#define MQ_AO_GPIO			21
-#define MQ_DO_GPIO			22
-#define LED_GREEN_GPIO 		27
-#define LED_YELLOW_GPIO 	28
-#define LED_RED_GPIO 		29
+#define PRESSURE_GPIO 		4
+#define PRESSURE_SCK 		5
+#define BEEPER_GPIO 		22
+#define SG_GPIO				29
+#define LED_GREEN_GPIO 		21
+#define LED_YELLOW_GPIO 	23
+#define LED_RED_GPIO 		25
 
 #define DHT_NAME 			"dht11"
 #define PRESSURE_NAME		"pressure"
@@ -37,6 +36,10 @@
 #define TEMPERATRUE_NAME	"temperature"
 #define HUMIDITY_NAME		"humidity"
 #define FACE_DETECTION_NAME "face_detection"
+
+#define PCF8591_ADDRESS 0x48
+#define PCF8591_AIN0 0
+#define VOLTAGE_REF 5
 
 
 typedef struct device
@@ -59,6 +62,7 @@ void PutBeeperInLink();
 void PutPressureInLink();
 void putCameraInLink();
 void PutSGInLink();
+void PutMQInLink();
 
 void device_init();
 

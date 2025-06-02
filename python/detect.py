@@ -15,19 +15,48 @@
 
 import argparse
 import sys
+import os
 import time
 import threading
+import mmap
+import posix_ipc
+import ctypes
 
 import cv2
 import subprocess
 import mediapipe as mp
 
-import libc_utils as c_utils
-
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
 from utils import visualize
+
+lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '/home/pi/Projects/vehicle/libs'))
+print(lib_path)
+sys.path.insert(0, lib_path)
+import libc_utils as c_utils
+
+
+class Attribute(ctypes.Structure):
+  _fields_ = [
+      ("beeper", ctypes.c_int),
+      ("humidity", ctypes.c_int),
+      ("temperature", ctypes.c_float),
+      ("pressure", ctypes.c_float),
+      ("gas", ctypes.c_float),
+      ("face_detection", ctypes.c_int),
+      ("led_green", ctypes.c_bool),
+      ("led_yellow", ctypes.c_bool),
+      ("led_red", ctypes.c_bool),
+      ("in_car", ctypes.c_bool),
+      ("fire_ctl", ctypes.c_bool),
+      ("window", ctypes.c_bool),
+      ("hand_ctl", ctypes.c_bool)
+  ]
+
+shm = None
+sem = None
+attribute_ptr = None
 
 # Global variables to calculate FPS
 COUNTER, FPS = 0, 0
@@ -51,12 +80,15 @@ def run(model: str, min_detection_confidence: float,
     height: The height of the frame captured from the camera.
   """
 
-  c_utils.init_c()
+  global shm, sem, attribute_ptr
+  
+  # c_utils.init_c()
 
   # Start capturing video input from the camera
   cap = cv2.VideoCapture(camera_id, cv2.CAP_V4L2)
   cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
   cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+  cap.set(cv2.CAP_PROP_FPS, 20)
 
   ffmpeg_cmd = [
     'ffmpeg',
@@ -64,10 +96,12 @@ def run(model: str, min_detection_confidence: float,
     '-f', 'rawvideo',
     '-pix_fmt', 'bgr24',
     '-s', '640x480',
-    '-r', '30',
+    '-r', '20',
     '-i', '-',
     '-c:v', 'libx264',
     '-f', 'flv',
+    '-preset', 'ultrafast',
+    '-tune', 'zerolatency',
     'rtmp://47.93.33.13/live/stream'
   ]
 
@@ -102,6 +136,7 @@ def run(model: str, min_detection_confidence: float,
                                        result_callback=save_result)
   detector = vision.FaceDetector.create_from_options(options)
 
+  tmp_value = 0
   # Continuously capture images from the camera and run inference
   while cap.isOpened():
     success, image = cap.read()
@@ -129,9 +164,22 @@ def run(model: str, min_detection_confidence: float,
     if DETECTION_RESULT:
       # print(DETECTION_RESULT)
       current_frame = visualize(current_frame, DETECTION_RESULT)
-      c_utils.send_to_c(1)
-    else :
-      c_utils.send_to_c(0)
+      if tmp_value==0:
+        tmp_value = 1
+        # c_utils.send_to_c(1)
+
+        sem.acquire()
+        attribute_ptr.face_detection = 1
+        sem.release()
+
+    elif tmp_value==1:
+      tmp_value = 0
+      # c_utils.send_to_c(0)
+
+      sem.acquire()
+      attribute_ptr.face_detection = 0
+      sem.release()
+
     # print(c_utils.get_from_c())
 
     proc.stdin.write(current_frame.tobytes())
@@ -152,3 +200,22 @@ def thread_create(model: str, min_detection_confidence: float,
                       args=(model,min_detection_confidence,min_suppression_threshold,camera_id,width,height))
   t.start()
   t.join()
+
+def init():
+  global shm, sem, attribute_ptr
+
+  SHM_NAME = "/attr_shm"
+  SEM_NAME = "/attr_sem"
+  shm_size = ctypes.sizeof(Attribute)
+
+  shm = posix_ipc.SharedMemory(SHM_NAME)
+  sem = posix_ipc.Semaphore(SEM_NAME)
+  
+  mem = mmap.mmap(shm.fd, shm_size, access=mmap.ACCESS_WRITE)
+  shm.close_fd()
+  
+  attribute_ptr = Attribute.from_buffer(mem)
+
+if __name__ == "__main__":
+  init()
+  run("/home/pi/Projects/vehicle/python/models/detector.tflite", 0.85, 0.5, 0, 640, 480)

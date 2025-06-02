@@ -7,22 +7,27 @@
 
 void *thread_get_data(){
 	device 		*device_pfind = NULL;
-	float 		*dht_data = (float*)malloc(sizeof(float)<<1);
 
 	while(true)
 	{
 		
 		//¶ÁÈ¡LEDºìµÆ×´Ì¬
 		device_pfind = findDEVICEinLink(LED_RED_NAME);
+		sem_wait(sem);
 		attribute_ptr->led_red = *(int*)device_pfind->read_status();
+		sem_post(sem);
 
 		//¶ÁÈ¡LEDÂÌµÆ×´Ì¬
 		device_pfind = findDEVICEinLink(LED_GREEN_NAME);
+		sem_wait(sem);
 		attribute_ptr->led_green = *(int*)device_pfind->read_status();
+		sem_post(sem);
 
 		//¶ÁÈ¡LED»ÆµÆ×´Ì¬
 		device_pfind = findDEVICEinLink(LED_YELLOW_NAME);
+		sem_wait(sem);
 		attribute_ptr->led_yellow = *(int*)device_pfind->read_status();
+		sem_post(sem);
 
 		//¶ÁÈ¡·äÃùÆ÷×´Ì¬
 		device_pfind = findDEVICEinLink(BEEPER_NAME);
@@ -30,18 +35,37 @@ void *thread_get_data(){
 
 		//¶ÁÈ¡Ñ¹Á¦´«¸ÐÆ÷Êý¾Ý
 		device_pfind = findDEVICEinLink(PRESSURE_NAME);
+		sem_wait(sem);
 		attribute_ptr->pressure = *(float*)device_pfind->read_status();
-		//printf("%.2f\n",attribute_ptr->pressure);
+		sem_post(sem);
+		printf("pressure: %.2f\n",attribute_ptr->pressure);
 
 		//¶ÁÈ¡ÎÂÊª¶ÈÊý¾Ý
 		device_pfind = findDEVICEinLink(DHT_NAME);
-		dht_data = (float*)device_pfind->read_status();
+		float* dht_data = (float*)device_pfind->read_status();
+		sem_wait(sem);
 		attribute_ptr->temperature = dht_data[0];
 		attribute_ptr->humidity = (int)dht_data[1];
+		sem_post(sem);
+		printf("temperature: %.2f\nhumidity: %d\n", attribute_ptr->temperature, attribute_ptr->humidity);
+
+		//¶ÁÈ¡ÎÂÊª¶ÈÊý¾Ý
+		device_pfind = findDEVICEinLink(MQ_NAME);
+		sem_wait(sem);
+		attribute_ptr->gas = *(float*)device_pfind->read_status();
+		sem_post(sem);
+		printf("ppm: %.2f\n",attribute_ptr->gas);
+		
 
 		//¶ÁÈ¡¶æ»ú×´Ì¬
 		device_pfind = findDEVICEinLink(SG_NAME);
+		sem_wait(sem);
 		attribute_ptr->window = *(int*)device_pfind->read_status();
+		sem_post(sem);
+
+		sem_wait(sem);
+		printf("attribute_ptr->face_detection: %d\n",attribute_ptr->face_detection);
+		sem_post(sem);
 
 		//MQTT·¢²¼
 		mqtt_publish();

@@ -10,15 +10,23 @@ set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/c/src)   # 源文件目录
 set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/c/include)      # 头文件目录
 set(LIB_DIR ${CMAKE_SOURCE_DIR}/libs)               # 库文件目录
 
+
+# /*****************************************已废弃_2025.06.03 00:25*************************************************************/
 # 查找Python3开发环境
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+# find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+
 
 # 添加头文件搜索路径
 include_directories(
   ${INCLUDE_DIR}
-  ${Python3_INCLUDE_DIRS}
   /usr/include/cjson
   /usr/include/iniparser
+
+
+  # /*****************************************已废弃_2025.06.03 00:25*************************************************************/
+  # ${Python3_INCLUDE_DIRS}
+
+
 )
 
 # 自动收集所有源文件
@@ -40,12 +48,17 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   mosquittopp  # libmosquittopp.so
   zlog         # libzlog.so
   sqlite3      # libsqlite3.so
-  c_utils
-  ${Python3_LIBRARIES}
-  ${Python3_LINK_OPTIONS}
+  m
+  rt
+  
+  # /*****************************************已废弃_2025.06.03 00:25*************************************************************/
+  # c_utils 
+  # ${Python3_LIBRARIES}  
+  # ${Python3_LINK_OPTIONS}
 )
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/py_c_utils)
+# /*****************************************已废弃_2025.06.03 00:25*************************************************************/
+# add_subdirectory(${PROJECT_SOURCE_DIR}/py_c_utils)
 
 # 设置可执行文件输出目录
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
