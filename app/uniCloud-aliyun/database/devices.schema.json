@@ -1,0 +1,65 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"deviceName": {
+			"description": "设备名称",
+			"bsonType": "string"
+		},
+		"lastActive": {
+			"description": "最后活跃时间戳",
+			"bsonType": "timestamp"
+		},
+		"online": {
+			"description": "是否在线",
+			"bsonType": "bool"
+		},
+		"sensorList": {
+			"description": "数据列表",
+			"bsonType": "array",
+			"additionalProperties": true,
+			"items": {
+				"bsonType": "object",
+				"properties": {
+					"name": {
+						"description": "传感器名称",
+						"bsonType": "string"
+					},
+					"id": {
+						"description": "传感器唯一标识",
+						"bsonType": "string"
+					},
+					"imageUrl": {
+						"description": "传感器图标路径",
+						"bsonType": "string"
+					},
+					"value": {
+						"description": "传感器数值（支持数字\/布尔值\/字符串）",
+						"bsonType": ["int", "string", "bool","double"]
+					},
+					"unit": {
+						"description": "数值单位（可选）",
+						"bsonType": "string"
+					},
+					"onlyShow": {
+						"description": "是否仅显示不控制",
+						"bsonType": "bool"
+					},
+					"threshold": {
+						"description": "报警阈值",
+						"bsonType": "number"
+					}
+				}
+			}
+		}
+	}
+}
