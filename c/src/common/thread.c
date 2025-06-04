@@ -76,22 +76,12 @@ void *thread_get_data(){
 }
 
 void *thread_cmd_ctl(){
-	device 		*device_pfind = NULL;
-	cmd			*cmd_pfind = NULL;
-	
-	//开始工作
-	device_pfind = findDEVICEinLink(LED_GREEN_NAME);
-	device_pfind->open();
+
 	while(true){
-		
-		//火灾
-		cmd_pfind = findCMDinLink(FIRE_CONTROL_NAME);
-		cmd_pfind->cmd_handler();
-		sleep(2);
+		findCMDinLink(HOT_CTL_NAME)->cmd_handler();
+		findCMDinLink(GAS_CTL_NAME)->cmd_handler();
+		sleep(1);
 	}
-	//结束工作
-	device_pfind = findDEVICEinLink(LED_GREEN_NAME);
-	device_pfind->close();
 	pthread_exit(NULL);
 }
 

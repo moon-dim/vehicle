@@ -29,7 +29,7 @@ typedef struct attribute{
     bool    hand_ctl;           //手动控制
 
     float   temperature_threshold;  //温度阈值
-    float   humidity_threshold;     //湿度阈值
+    // float   humidity_threshold;     //湿度阈值
     float   gas_threshold;          //有害气体浓度阈值 
     
 }attribute;

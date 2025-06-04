@@ -109,16 +109,16 @@ void mqtt_publish()
 
     sem_wait(sem);
     sprintf(tmp, "%.2f", attribute_ptr->temperature);
-    printf("tmptem: %s\n",tmp);
+    // printf("tmptem: %s\n",tmp);
     cJSON_AddItemToObject(items, TEMPERATRUE_NAME, cJSON_CreateString(tmp));
 
     cJSON_AddItemToObject(items, HUMIDITY_NAME, cJSON_CreateNumber(attribute_ptr->humidity));
 
     sprintf(tmp, "%.2f", attribute_ptr->gas);
-    printf("tmpgas: %s\n",tmp);
+    // printf("tmpgas: %s\n",tmp);
     cJSON_AddItemToObject(items, MQ_NAME, cJSON_CreateString(tmp));
     
-    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(tmp_face));
+    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(attribute_ptr->face_detection));
     cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateBool(attribute_ptr->beeper));
     cJSON_AddItemToObject(items, LED_GREEN_NAME, cJSON_CreateBool(attribute_ptr->led_green));
     cJSON_AddItemToObject(items, LED_RED_NAME, cJSON_CreateBool(attribute_ptr->led_red));
@@ -132,7 +132,7 @@ void mqtt_publish()
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
     json_string = cJSON_Print(value);
-    //printf("%s\n", json_string);
+    // printf("%s\n", json_string);
 
     /**************************发布数据*****************************/
     rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
@@ -173,8 +173,8 @@ void mqtt_publish_urgent(){
     sem_post(sem);
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
-    json_string = cJSON_Print(value);
-    //printf("%s\n", json_string);
+    // json_string = cJSON_Print(value);
+    printf("%s\n", json_string);
 
     /**************************发布数据*****************************/
     rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
@@ -220,6 +220,10 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     }
     //把数据转成 字符串输出
     //printf("params:%s\n", cJSON_Print(value));
+
+    sem_wait(sem);
+    attribute_ptr->hand_ctl = true;
+    sem_post(sem);
 
     ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
     total_data = cJSON_Print(ident_value);

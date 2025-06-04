@@ -54,7 +54,7 @@ class Attribute(ctypes.Structure):
       ("window", ctypes.c_bool),
       ("hand_ctl", ctypes.c_bool),
       ("temperature_threshold", ctypes.c_float),
-      ("humidity_threshold", ctypes.c_float),
+      # ("humidity_threshold", ctypes.c_float),
       ("gas_threshold", ctypes.c_float)
   ]
 
