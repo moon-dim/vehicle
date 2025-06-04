@@ -95,7 +95,6 @@ void mqtt_publish()
     int             rv;
     char            *json_string;
     char            tmp[10];
-    int             tmp_face;
     
     if(!mosquit_inf_ptr->connection)return;
     /*******************创建json对象*********************/
@@ -108,6 +107,7 @@ void mqtt_publish()
     cJSON_AddItemToObject(value, "id", cJSON_CreateString(mosquit_inf_ptr->id));
     cJSON_AddItemToObject(value, "params", items);
 
+    sem_wait(sem);
     sprintf(tmp, "%.2f", attribute_ptr->temperature);
     printf("tmptem: %s\n",tmp);
     cJSON_AddItemToObject(items, TEMPERATRUE_NAME, cJSON_CreateString(tmp));
@@ -116,20 +116,19 @@ void mqtt_publish()
 
     sprintf(tmp, "%.2f", attribute_ptr->gas);
     printf("tmpgas: %s\n",tmp);
-    cJSON_AddItemToObject(items, GAS_CONTROL_NAME, cJSON_CreateString(tmp));
-
-    sem_wait(sem);
-    tmp_face = attribute_ptr->face_detection;
-    sem_post(sem);
+    cJSON_AddItemToObject(items, MQ_NAME, cJSON_CreateString(tmp));
+    
     cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(tmp_face));
+    cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateBool(attribute_ptr->beeper));
+    cJSON_AddItemToObject(items, LED_GREEN_NAME, cJSON_CreateBool(attribute_ptr->led_green));
+    cJSON_AddItemToObject(items, LED_RED_NAME, cJSON_CreateBool(attribute_ptr->led_red));
+    cJSON_AddItemToObject(items, LED_YELLOW_NAME, cJSON_CreateBool(attribute_ptr->led_yellow));
 
-    cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateNumber(attribute_ptr->beeper));
-    cJSON_AddItemToObject(items, LED_GREEN_NAME, cJSON_CreateNumber(attribute_ptr->led_green));
-    cJSON_AddItemToObject(items, LED_RED_NAME, cJSON_CreateNumber(attribute_ptr->led_red));
-    cJSON_AddItemToObject(items, LED_YELLOW_NAME, cJSON_CreateNumber(attribute_ptr->led_yellow));
-    cJSON_AddItemToObject(items, FIRE_CONTROL_NAME, cJSON_CreateNumber(attribute_ptr->fire_ctl));
-    cJSON_AddItemToObject(items, IN_CAR_NAME, cJSON_CreateNumber(attribute_ptr->in_car));
-
+    cJSON_AddItemToObject(items, SG_NAME, cJSON_CreateBool(attribute_ptr->window));
+    cJSON_AddItemToObject(items, HOT_CTL_NAME, cJSON_CreateBool(attribute_ptr->hot_ctl));
+    cJSON_AddItemToObject(items, GAS_CTL_NAME, cJSON_CreateBool(attribute_ptr->gas_ctl));
+    cJSON_AddItemToObject(items, IN_CAR_NAME, cJSON_CreateBool(attribute_ptr->in_car));
+    sem_post(sem);
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
     json_string = cJSON_Print(value);
@@ -147,6 +146,45 @@ void mqtt_publish()
     //    //zlog_info(mosquit_inf_ptr->w_zc,"punlish success topic:%s\n",mosquit_inf_ptr->pub_topic);
 
     // mosquitto_disconnect(mosquit);
+}
+
+void mqtt_publish_urgent(){
+    int             mid;
+    int             rv;
+    char            *json_string;
+    
+    if(!mosquit_inf_ptr->connection)return;
+    /*******************创建json对象*********************/
+    cJSON *value = cJSON_CreateObject();
+    cJSON *items = cJSON_CreateObject();
+
+    /*****************************向json对象中添加一对元素,object为json对象*******************************************/
+    cJSON_AddItemToObject(value, "version", cJSON_CreateString(mosquit_inf_ptr->version));
+    cJSON_AddItemToObject(value, "method", cJSON_CreateString(mosquit_inf_ptr->method));
+    cJSON_AddItemToObject(value, "id", cJSON_CreateString(mosquit_inf_ptr->id));
+    cJSON_AddItemToObject(value, "params", items);
+
+    sem_wait(sem);
+    cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateBool(attribute_ptr->beeper));
+    cJSON_AddItemToObject(items, LED_YELLOW_NAME, cJSON_CreateBool(attribute_ptr->led_yellow));
+    cJSON_AddItemToObject(items, HOT_CTL_NAME, cJSON_CreateBool(attribute_ptr->hot_ctl));
+    cJSON_AddItemToObject(items, GAS_CTL_NAME, cJSON_CreateBool(attribute_ptr->gas_ctl));
+    cJSON_AddItemToObject(items, SG_NAME, cJSON_CreateBool(attribute_ptr->window));
+    sem_post(sem);
+
+    /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
+    json_string = cJSON_Print(value);
+    //printf("%s\n", json_string);
+
+    /**************************发布数据*****************************/
+    rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
+    if (rv != MOSQ_ERR_SUCCESS)
+    {
+        printf("publish error:%s\n", strerror(errno));
+        //zlog_error(mosquit_inf_ptr->w_zc, "publish error:%s\n", strerror(errno));
+        return;
+    }
+    printf("punlish success topic:%s\n", mosquit_inf_ptr->pub_topic);
 }
 
 void mqtt_subscribe_callback(struct mosquitto *mosqut, void *obj, int mid, int qos_count, const int *granted_qos)
@@ -183,13 +221,24 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     //把数据转成 字符串输出
     //printf("params:%s\n", cJSON_Print(value));
 
-    ident_value = cJSON_GetObjectItem(value, GAS_CONTROL_NAME);
+    ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
     total_data = cJSON_Print(ident_value);
-    attribute_ptr->gas = atoi(total_data);
+    printf("beeper:%s\n", total_data);
+    printf("beeper2: %d\n", ident_value->valueint);
 
-    ident_value = cJSON_GetObjectItem(value, FIRE_CONTROL_NAME);
+    // attribute_ptr->gas = atoi(total_data);
+
+    ident_value = cJSON_GetObjectItem(value, LED_YELLOW_NAME);
     total_data = cJSON_Print(ident_value);
-    attribute_ptr->fire_ctl = atoi(total_data);
+    printf("led_yellow:%s\n", total_data);
+    printf("led_yellow2: %d\n", ident_value->valueint);
+
+    ident_value = cJSON_GetObjectItem(value, SG_NAME);
+    total_data = cJSON_Print(ident_value);
+    printf("window:%s\n", total_data);
+    printf("window2: %d\n", ident_value->valueint);
+
+    // attribute_ptr->hot_ctl = atoi(total_data);
 
 }
 

@@ -10,21 +10,27 @@
 #include <semaphore.h>
 
 typedef struct attribute{
-    int     beeper;             //蜂鸣器
-    int     humidity;           //湿度
+    int     face_detection;     //人脸检测
+    
     float   temperature;        //温度
+    float   humidity;           //湿度
     float   pressure;           //压力
     float   gas;                //有害气体
-    int     face_detection;     //人脸检测
+    bool    beeper;             //蜂鸣器
     
     bool    led_green;          //工作灯
     bool    led_yellow;         //警报灯
     bool    led_red;            //错误灯
     
     bool    in_car;             //车内有无人员
-    bool    fire_ctl;           //火灾报警
+    bool    hot_ctl;            //高温报警
+    bool    gas_ctl;            //有害气体报警
     bool    window;             //车窗开关
     bool    hand_ctl;           //手动控制
+
+    float   temperature_threshold;  //温度阈值
+    float   humidity_threshold;     //湿度阈值
+    float   gas_threshold;          //有害气体浓度阈值 
     
 }attribute;
 

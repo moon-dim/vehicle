@@ -32,7 +32,6 @@
 				uni.getLocation({
 					type: 'wgs84',
 					success(res) {
-						console.log(res)
 						const latitude = res.latitude
 						const longitude = res.longitude
 						const speed = res.speed
@@ -44,7 +43,6 @@
 								location: longitude + "," + latitude
 							},
 							success(res) {
-								console.log(res)
 								let cityCode = res.data.regeocode.addressComponent.adcode
 								uni.request({
 									url: 'https://restapi.amap.com/v3/weather/weatherInfo?parameters',

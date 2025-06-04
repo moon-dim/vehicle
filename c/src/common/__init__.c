@@ -75,5 +75,6 @@ void device_init(){
 
 //初始化全部指令
 void cmd_init(){
-    PutFireInLink();
+    PutHotCTLInLink();
+    PutGasCTLInLink();
 }

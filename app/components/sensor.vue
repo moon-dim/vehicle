@@ -52,7 +52,7 @@
 		},
 		data() {
 			return {
-				localSensorList: JSON.parse(JSON.stringify(this.sensorList))
+				localSensorList: this.sensorList
 			};
 		},
 		methods: {
@@ -61,19 +61,21 @@
 				const updatedItem = {
 				      ...this.localSensorList[index],
 				      value: !this.localSensorList[index].value
-				    }
+				}
 				//  更新本地副本
 				this.$set(this.localSensorList, index, updatedItem)
-				
 				// 触发自定义事件（关键步骤）
-				this.$emit('sensor-change', {
-				  id: updatedItem.id,
-				  value: updatedItem.value
-				})
+				this.$emit('sensor-change', updatedItem)
 			},
 			handleBoxClick(sensorId) {
 			    this.$emit('sensor-box-click', sensorId)
 			}
+		},
+		watch:{
+			sensorList(newVal){
+				this.localSensorList = newVal
+			}
+			
 		}
 	}
 </script>

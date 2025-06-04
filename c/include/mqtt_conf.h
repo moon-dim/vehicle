@@ -46,6 +46,7 @@ extern mosquitto_inf        *mosquit_inf_ptr;
 
 void mqtt_init();
 void mqtt_publish();
+void mqtt_publish_urgent();
 void mqtt_subscribe_callback (struct mosquitto *mosquit, void *obj, int mid, int qos_count, const int *granted_qos);
 void mqtt_recv_message_callback(struct mosquitto *mosquit,void *obj, const struct mosquitto_message *msg);
 void mqtt_connect_callback(struct mosquitto *mosquit, void *obj, int rc);

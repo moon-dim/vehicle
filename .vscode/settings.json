@@ -25,6 +25,20 @@
         "face_detection.h": "c",
         "stdbool.h": "c",
         "stdatomic.h": "c",
-        "mqtt_conf.h": "c"
+        "mqtt_conf.h": "c",
+        "stddef.h": "c",
+        "cmath": "c",
+        "*.def": "c",
+        "*.inc": "c",
+        "types.h": "c",
+        "charconv": "c",
+        "chrono": "c",
+        "optional": "c",
+        "format": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "functional": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }

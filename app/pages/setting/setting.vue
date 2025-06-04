@@ -3,14 +3,14 @@
   <view class="container">
 	
 	<threshold
-		target= '温度'
+		target= '体感温度'
 		v-model="thresholds.temperature"
 	/>
 	
-    <threshold
+<!--    <threshold
     	target= '湿度'
     	v-model="thresholds.humidity"
-    />
+    /> -->
 	
 	<threshold
 		target= '烟雾'
@@ -34,7 +34,7 @@ export default {
 		return {
 			thresholds: {
 				temperature: 0, 
-				humidity: 0,
+				// humidity: 0,
 				gas: 0
 			}
 		}
@@ -51,7 +51,7 @@ export default {
 			}
 		},
 		async saveSettings() {
-			console.log(this.thresholds.temperature,this.thresholds.humidity,this.thresholds.gas)
+			console.log(this.thresholds.temperature, this.thresholds.gas)
 			
 			const device = uni.getStorageSync('device')
 			for (const [key, threshold] of Object.entries(this.thresholds)) {

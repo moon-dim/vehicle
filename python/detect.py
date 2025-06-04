@@ -39,19 +39,23 @@ import libc_utils as c_utils
 
 class Attribute(ctypes.Structure):
   _fields_ = [
-      ("beeper", ctypes.c_int),
-      ("humidity", ctypes.c_int),
+      ("face_detection", ctypes.c_int),
       ("temperature", ctypes.c_float),
+      ("humidity", ctypes.c_float),
       ("pressure", ctypes.c_float),
       ("gas", ctypes.c_float),
-      ("face_detection", ctypes.c_int),
+      ("beeper", ctypes.c_bool),
       ("led_green", ctypes.c_bool),
       ("led_yellow", ctypes.c_bool),
       ("led_red", ctypes.c_bool),
       ("in_car", ctypes.c_bool),
-      ("fire_ctl", ctypes.c_bool),
+      ("hot_ctl", ctypes.c_bool),
+      ("gas_ctl", ctypes.c_bool),
       ("window", ctypes.c_bool),
-      ("hand_ctl", ctypes.c_bool)
+      ("hand_ctl", ctypes.c_bool),
+      ("temperature_threshold", ctypes.c_float),
+      ("humidity_threshold", ctypes.c_float),
+      ("gas_threshold", ctypes.c_float)
   ]
 
 shm = None

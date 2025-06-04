@@ -1,3 +1,10 @@
+/*
+ * @Author       : moon-dim zsjmoon@qq.com
+ * @Date         : 2025-06-03 21:52:31
+ * @LastEditTime : 2025-06-03 22:53:25
+ * @FilePath     : \vehicle\c\include\device_fac.h
+ * @Description  : 
+ */
 #ifndef __DEVICEFAC_H__
 #define __DEVICEFAC_H__
  
@@ -22,17 +29,13 @@
 #define DHT_NAME 			"dht11"
 #define PRESSURE_NAME		"pressure"
 #define BEEPER_NAME	 		"beeper"
-#define	SG_NAME				"steering_engine"
-#define MQ_NAME				"mq135"
+#define	SG_NAME				"window"
+#define MQ_NAME				"gas"
 #define LED_GREEN_NAME 	 	"led_green"
 #define LED_YELLOW_NAME	 	"led_yellow"
 #define LED_RED_NAME 	 	"led_red"
 
-#define FIRE_CONTROL_NAME 	"fire_ctl"
-#define GAS_CONTROL_NAME	"gas"
-#define INF_CONTROL_NAME	"inf_ctl"
 #define	IN_CAR_NAME			"in_car"
-
 #define TEMPERATRUE_NAME	"temperature"
 #define HUMIDITY_NAME		"humidity"
 #define FACE_DETECTION_NAME "face_detection"

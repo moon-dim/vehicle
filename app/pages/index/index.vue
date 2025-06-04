@@ -112,19 +112,10 @@ export default {
 		},
 		sensorChange(payload) {
 			// 找到对应传感器
-			const index = this.sensorList.findIndex(
-				item => item.id === payload.id
-			)
-			if (index === -1) {
-				console.warn('未找到对应传感器:', payload.id)
-				return
-			}
-		
+			const index = this.device.sensorList.findIndex(item => item.id === payload.id)
+			
 			// 响应式更新
-			this.$set(this.sensorList, index, {
-				...this.sensorList[index],
-				value: payload.value
-			})
+			this.$set(this.device.sensorList, index, payload)
 			uni.setStorageSync('device', this.device)
 			
 			const target = {
@@ -134,7 +125,8 @@ export default {
 				"params": {},
 				timestamp: new Date().toISOString()
 			}
-			this.sensorList.forEach(item => {
+			
+			this.device.sensorList.forEach(item => {
 				// 仅处理包含 id 和 value 的有效项
 				if (item.id !== undefined && item.value !== undefined && !item.onlyShow) {
 					target.params[item.id] = item.value;
