@@ -67,8 +67,6 @@ void *thread_get_data(){
 		printf("attribute_ptr->face_detection: %d\n",attribute_ptr->face_detection);
 		sem_post(sem);
 
-
-
 		//MQTT·¢²¼
 		mqtt_publish();
 		sleep(2);

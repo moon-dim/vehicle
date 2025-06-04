@@ -13,6 +13,7 @@
 #include <dictionary.h>
 #include "mqtt_conf.h"
 #include "public_data.h"
+#include "find_link.h"
 
 // extern struct mosquitto     *mosquit_ptr;
 // extern mosquitto_inf        *mosquit_inf_ptr;
@@ -197,7 +198,6 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     cJSON           *value;
     cJSON           *ident_value;
     char            *cjson_data;
-    char            *total_data;
 
     strncpy(mosquit_inf_ptr->recv_message, (char *)msg->payload, sizeof(mosquit_inf_ptr->recv_message));
     printf("recv_message: %s\n", mosquit_inf_ptr->recv_message);
@@ -223,24 +223,38 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
 
     sem_wait(sem);
     attribute_ptr->hand_ctl = true;
-    sem_post(sem);
 
     ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("beeper:%s\n", total_data);
-    printf("beeper2: %d\n", ident_value->valueint);
-
-    // attribute_ptr->gas = atoi(total_data);
+    if(ident_value->valueint){
+        attribute_ptr->beeper = true;
+        findDEVICEinLink(BEEPER_NAME)->open();
+    }
+    else{
+        attribute_ptr->beeper = false;
+        findDEVICEinLink(BEEPER_NAME)->close();
+    }
 
     ident_value = cJSON_GetObjectItem(value, LED_YELLOW_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("led_yellow:%s\n", total_data);
-    printf("led_yellow2: %d\n", ident_value->valueint);
+    if(ident_value->valueint){
+        attribute_ptr->led_yellow = true;
+        findDEVICEinLink(LED_YELLOW_NAME)->open();
+    }
+    else{
+        attribute_ptr->led_yellow = false;
+        findDEVICEinLink(LED_YELLOW_NAME)->close();
+    }
 
     ident_value = cJSON_GetObjectItem(value, SG_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("window:%s\n", total_data);
-    printf("window2: %d\n", ident_value->valueint);
+    if(ident_value->valueint){
+        attribute_ptr->window = true;
+        findDEVICEinLink(SG_NAME)->open();
+    }
+    else{
+        attribute_ptr->window = false;
+        findDEVICEinLink(SG_NAME)->close();
+    }
+
+    sem_post(sem);
 
     // attribute_ptr->hot_ctl = atoi(total_data);
 
