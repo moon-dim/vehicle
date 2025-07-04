@@ -1,7 +1,0 @@
-{
-  "name": "updateSensors",
-  "dependencies": {
-    "updateSensors": "file:"
-  },
-  "extensions": {}
-}

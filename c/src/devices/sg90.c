@@ -21,7 +21,7 @@ int sg_open()
 	if(sg.status)return 0;
     softPwmWrite(SG_GPIO,10);
     sleep(3);
-    softPwmWrite (SG_GPIO, 15);
+    softPwmWrite (SG_GPIO, 0);
     sg.status = true;
 }
 
@@ -31,7 +31,7 @@ int sg_close()
 	if(!sg.status)return 0;
     softPwmWrite(SG_GPIO,20);
     sleep(3);
-    softPwmWrite (SG_GPIO, 15);
+    softPwmWrite (SG_GPIO, 0);
     sg.status = false;
 }
 

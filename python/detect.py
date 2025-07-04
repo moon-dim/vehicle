@@ -54,7 +54,7 @@ class Attribute(ctypes.Structure):
       ("window", ctypes.c_bool),
       ("hand_ctl", ctypes.c_bool),
       ("temperature_threshold", ctypes.c_float),
-      ("humidity_threshold", ctypes.c_float),
+      # ("humidity_threshold", ctypes.c_float),
       ("gas_threshold", ctypes.c_float)
   ]
 
@@ -140,7 +140,8 @@ def run(model: str, min_detection_confidence: float,
                                        result_callback=save_result)
   detector = vision.FaceDetector.create_from_options(options)
 
-  tmp_value = 0
+  have_num = 0
+  no_num = 0
   # Continuously capture images from the camera and run inference
   while cap.isOpened():
     success, image = cap.read()
@@ -168,21 +169,22 @@ def run(model: str, min_detection_confidence: float,
     if DETECTION_RESULT:
       # print(DETECTION_RESULT)
       current_frame = visualize(current_frame, DETECTION_RESULT)
-      if tmp_value==0:
-        tmp_value = 1
+      have_num+=1
+      if have_num == 5:
+        have_num = 0
         # c_utils.send_to_c(1)
-
         sem.acquire()
         attribute_ptr.face_detection = 1
         sem.release()
 
-    elif tmp_value==1:
-      tmp_value = 0
-      # c_utils.send_to_c(0)
-
-      sem.acquire()
-      attribute_ptr.face_detection = 0
-      sem.release()
+    else :
+      no_num+=1
+      if no_num == 1000:
+        no_num = 0
+        # c_utils.send_to_c(0)
+        sem.acquire()
+        attribute_ptr.face_detection = 0
+        sem.release()
 
     # print(c_utils.get_from_c())
 
@@ -219,6 +221,10 @@ def init():
   shm.close_fd()
   
   attribute_ptr = Attribute.from_buffer(mem)
+
+  sem.acquire()
+  attribute_ptr.face_detection = 0
+  sem.release()
 
 if __name__ == "__main__":
   init()

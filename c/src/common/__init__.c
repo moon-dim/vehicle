@@ -55,6 +55,11 @@ void shm_init(){
 
     // 创建信号量（进程间同步）
     sem = sem_open(SEM_NAME, O_CREAT, 0666, 1);
+
+    sem_wait(sem);
+    attribute_ptr->temperature_threshold = 35;
+    attribute_ptr->gas_threshold         = 10;
+    sem_post(sem);
 }
 
 //初始化全部设备
@@ -77,4 +82,5 @@ void device_init(){
 void cmd_init(){
     PutHotCTLInLink();
     PutGasCTLInLink();
+    PutHumanCTLInLink();
 }

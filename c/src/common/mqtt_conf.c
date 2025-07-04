@@ -13,6 +13,7 @@
 #include <dictionary.h>
 #include "mqtt_conf.h"
 #include "public_data.h"
+#include "find_link.h"
 
 // extern struct mosquitto     *mosquit_ptr;
 // extern mosquitto_inf        *mosquit_inf_ptr;
@@ -109,16 +110,16 @@ void mqtt_publish()
 
     sem_wait(sem);
     sprintf(tmp, "%.2f", attribute_ptr->temperature);
-    printf("tmptem: %s\n",tmp);
+    // printf("tmptem: %s\n",tmp);
     cJSON_AddItemToObject(items, TEMPERATRUE_NAME, cJSON_CreateString(tmp));
 
     cJSON_AddItemToObject(items, HUMIDITY_NAME, cJSON_CreateNumber(attribute_ptr->humidity));
 
     sprintf(tmp, "%.2f", attribute_ptr->gas);
-    printf("tmpgas: %s\n",tmp);
+    // printf("tmpgas: %s\n",tmp);
     cJSON_AddItemToObject(items, MQ_NAME, cJSON_CreateString(tmp));
     
-    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(tmp_face));
+    cJSON_AddItemToObject(items, FACE_DETECTION_NAME, cJSON_CreateNumber(attribute_ptr->face_detection));
     cJSON_AddItemToObject(items, BEEPER_NAME, cJSON_CreateBool(attribute_ptr->beeper));
     cJSON_AddItemToObject(items, LED_GREEN_NAME, cJSON_CreateBool(attribute_ptr->led_green));
     cJSON_AddItemToObject(items, LED_RED_NAME, cJSON_CreateBool(attribute_ptr->led_red));
@@ -132,7 +133,7 @@ void mqtt_publish()
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
     json_string = cJSON_Print(value);
-    //printf("%s\n", json_string);
+    // printf("%s\n", json_string);
 
     /**************************发布数据*****************************/
     rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
@@ -173,8 +174,8 @@ void mqtt_publish_urgent(){
     sem_post(sem);
 
     /****将一个cJSON结构体代表的json对象转换为一个json格式的字符串****/
-    json_string = cJSON_Print(value);
-    //printf("%s\n", json_string);
+    // json_string = cJSON_Print(value);
+    printf("%s\n", json_string);
 
     /**************************发布数据*****************************/
     rv = mosquitto_publish(mosquit_ptr, &mid, mosquit_inf_ptr->pub_topic, strlen(json_string) + 1, json_string, mosquit_inf_ptr->qos, 0);
@@ -197,7 +198,6 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     cJSON           *value;
     cJSON           *ident_value;
     char            *cjson_data;
-    char            *total_data;
 
     strncpy(mosquit_inf_ptr->recv_message, (char *)msg->payload, sizeof(mosquit_inf_ptr->recv_message));
     printf("recv_message: %s\n", mosquit_inf_ptr->recv_message);
@@ -221,22 +221,66 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     //把数据转成 字符串输出
     //printf("params:%s\n", cJSON_Print(value));
 
-    ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("beeper:%s\n", total_data);
-    printf("beeper2: %d\n", ident_value->valueint);
+    sem_wait(sem);
+    ident_value = cJSON_GetObjectItem(value, TEMPERATRUE_THRESHOLD_NAME);
+    if(ident_value){
+        if(ident_value->valueint){
+            attribute_ptr->temperature_threshold = ident_value->valueint;
+        }
+        else{
+            attribute_ptr->temperature_threshold = ident_value->valueint;
+        }
+    }
+    ident_value = cJSON_GetObjectItem(value, GAS_THRESHOLD_NAME);
+    if(ident_value){
+        if(ident_value->valueint){
+            attribute_ptr->gas_threshold = ident_value->valueint;
+        }
+        else{
+            attribute_ptr->gas_threshold = ident_value->valueint;
+        }
+    }
 
-    // attribute_ptr->gas = atoi(total_data);
+    ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->beeper = true;
+            findDEVICEinLink(BEEPER_NAME)->open();
+        }
+        else{
+            attribute_ptr->beeper = false;
+            findDEVICEinLink(BEEPER_NAME)->close();
+        }
+    }
 
     ident_value = cJSON_GetObjectItem(value, LED_YELLOW_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("led_yellow:%s\n", total_data);
-    printf("led_yellow2: %d\n", ident_value->valueint);
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->led_yellow = true;
+            findDEVICEinLink(LED_YELLOW_NAME)->open();
+        }
+        else{
+            attribute_ptr->led_yellow = false;
+            findDEVICEinLink(LED_YELLOW_NAME)->close();
+        }
+    }
 
     ident_value = cJSON_GetObjectItem(value, SG_NAME);
-    total_data = cJSON_Print(ident_value);
-    printf("window:%s\n", total_data);
-    printf("window2: %d\n", ident_value->valueint);
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->window = true;
+            findDEVICEinLink(SG_NAME)->open();
+        }
+        else{
+            attribute_ptr->window = false;
+            findDEVICEinLink(SG_NAME)->close();
+        }
+    }
+
+    sem_post(sem);
 
     // attribute_ptr->hot_ctl = atoi(total_data);
 

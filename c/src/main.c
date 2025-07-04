@@ -37,12 +37,12 @@ int main()
 
 	//采集数据线程
     pthread_create(&tid1, NULL, thread_get_data, NULL);
-    printf("Thread worker3 tid[%lu] created ok\n", tid1);
+    printf("Thread worker1 tid[%lu] created ok\n", tid1);
 
 	//执行指令线程
-    // pthread_create(&tid2, NULL, thread_cmd_ctl, NULL);
-    // printf("Thread worker2 tid[%lu] created ok\n", tid2);
+    pthread_create(&tid2, NULL, thread_cmd_ctl, NULL);
+    printf("Thread worker2 tid[%lu] created ok\n", tid2);
 
 	pthread_join(tid1,NULL);
-	// pthread_join(tid2,NULL);
+	pthread_join(tid2,NULL);
 }
