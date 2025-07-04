@@ -52,7 +52,7 @@
 		},
 		data() {
 			return {
-				localSensorList: this.sensorList
+				localSensorList: []
 			};
 		},
 		methods: {
@@ -74,6 +74,8 @@
 		watch:{
 			sensorList(newVal){
 				this.localSensorList = newVal
+				const index = this.localSensorList.findIndex(item => item.id === 'in_car')
+				this.localSensorList[index].value = this.localSensorList[index].value?'有人':'无人';
 			}
 			
 		}

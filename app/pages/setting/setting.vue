@@ -69,8 +69,7 @@ export default {
 				"version": "1.0.0",
 				"method": "thing.event.property.post",
 				"id": "654321",
-				"params": {},
-				timestamp: Date.now()
+				"params": {}
 			}
 			
 			for (const [key, value] of Object.entries(this.thresholds)) {

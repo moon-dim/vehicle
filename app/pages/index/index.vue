@@ -83,7 +83,8 @@ export default {
 						itemCount: 5
 					}
 				}
-			}
+			},
+			delaytime: 5
 		}
 	},
 	onLoad() {
@@ -118,12 +119,13 @@ export default {
 			this.$set(this.device.sensorList, index, payload)
 			uni.setStorageSync('device', this.device)
 			
+			this.startTimer(5)
+	
 			const target = {
 				"version": "1.0.0",
 				"method": "thing.event.property.post",
 				"id": "654321",
-				"params": {},
-				timestamp: new Date().toISOString()
+				"params": {}
 			}
 			
 			this.device.sensorList.forEach(item => {
@@ -144,24 +146,20 @@ export default {
 			console.log('MQTT消息 [主题]:', topic, '[内容]:', receiveData)
 			const date = Date.now();
 			if(!receiveData?.params)return
-			if(receiveData.params.deviceId){
-				if(receiveData.params.deviceId===deviceId){
-					this.$set(this.device, 'online', true)
-					this.$set(this.device, 'lastActive', date)
-					console.log("设备已连接！",this.device.online)
-				}
-				else {
-					console.log("设备连接错误！")
-				}
-				return
+			if(!this.device.online){
+				this.$set(this.device, 'online', true)
+				this.$set(this.device, 'lastActive', date)
 			}
 			
 			
 			Object.entries(receiveData.params).forEach(([sensorId, value]) => {
+				if (['led_yellow', 'beeper', 'window'].includes(sensorId) && this.delaytime) return;
 				const index = this.device.sensorList.findIndex(item => item.id === sensorId)
 				// console.log("sensorId:",sensorId,"value:",value,"index:",index)
 				
 				if (index !== -1) {
+					if(sensorId === 'in_car')
+						value = value?'有人':'无人';
 					// 前端响应式更新
 					this.$set(this.device.sensorList, index, {
 						...this.device.sensorList[index],
@@ -246,7 +244,17 @@ export default {
 			const minute = String(date.getMinutes()).padStart(2, '0')
 			const second = String(date.getSeconds()).padStart(2, '0')
 			return `${hour}:${minute}:${second}`
-		}
+		},
+		startTimer(num) {
+			this.delaytime =num;
+			let timer = setInterval(() => {
+				if (this.delaytime > 0) {
+					this.delaytime--
+				} else {
+					clearInterval(timer)
+				}
+			}, 1000)
+		},
 	}
 }
 </script>

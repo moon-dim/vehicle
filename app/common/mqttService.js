@@ -85,7 +85,7 @@ const mqttService = {
 	
     const topic = `/${mqttAccountInfo.productKey}/${mqttAccountInfo.deviceName}/user/update`
     client.publish(topic, JSON.stringify(payload), { qos: 1 }, (error) => {
-      console.log(error || '消息发布成功')
+		console.log(error || '消息发布成功');
     })
   },
 
@@ -105,7 +105,6 @@ const mqttService = {
     client.on('message', (topic, message) => {
       try {
         const receiveData = JSON.parse(message.toString())
-		console.log("mqtt_receiveData: ",receiveData)
         messageHandler(topic, receiveData)
       } catch (error) {
         console.error('消息处理失败:', error)

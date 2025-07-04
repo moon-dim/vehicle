@@ -50,7 +50,7 @@
 			},
 			thresholdRange() {
 				const ranges = {
-					'体感温度': { min: 0, max: 35 },
+					'体感温度': { min: 0, max: 40 },
 					'烟雾': { min: 0, max: 50 }
 				};
 				return ranges[this.target] || { min: 0, max: Infinity };
