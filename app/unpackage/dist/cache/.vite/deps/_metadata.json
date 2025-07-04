@@ -1,0 +1,43 @@
+{
+  "hash": "bcf8c2a4",
+  "configHash": "d7766b78",
+  "lockfileHash": "923dbad5",
+  "browserHash": "8fc2f367",
+  "optimized": {
+    "mui-player": {
+      "src": "../../../../../node_modules/mui-player/dist/mui-player.min.js",
+      "file": "mui-player.js",
+      "fileHash": "482db8de",
+      "needsInterop": true
+    },
+    "flv.js": {
+      "src": "../../../../../node_modules/flv.js/dist/flv.js",
+      "file": "flv__js.js",
+      "fileHash": "f1755204",
+      "needsInterop": true
+    },
+    "mqtt/dist/mqtt.min.js": {
+      "src": "../../../../../node_modules/mqtt/dist/mqtt.min.js",
+      "file": "mqtt_dist_mqtt__min__js.js",
+      "fileHash": "909688b0",
+      "needsInterop": true
+    },
+    "crypto-js/hmac-sha1": {
+      "src": "../../../../../node_modules/crypto-js/hmac-sha1.js",
+      "file": "crypto-js_hmac-sha1.js",
+      "fileHash": "2330d443",
+      "needsInterop": true
+    },
+    "hls.js": {
+      "src": "../../../../../node_modules/hls.js/dist/hls.mjs",
+      "file": "hls__js.js",
+      "fileHash": "b37422f5",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-TDUMLE5V": {
+      "file": "chunk-TDUMLE5V.js"
+    }
+  }
+}

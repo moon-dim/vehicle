@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "flv": "^0.0.1",
+    "flv.js": "^1.6.2",
+    "hls.js": "^1.6.2",
+    "mqtt": "^4.1.0",
+    "mui-player": "^1.8.1",
+    "ucharts": "^0.0.0",
+    "videojs-flash": "^2.2.1",
+    "videojs-flvjs-es6": "^1.0.1"
+  },
+  "devDependencies": {
+    "video.js": "^8.22.0"
+  }
+}
