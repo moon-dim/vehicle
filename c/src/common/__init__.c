@@ -82,4 +82,5 @@ void device_init(){
 void cmd_init(){
     PutHotCTLInLink();
     PutGasCTLInLink();
+    PutHumanCTLInLink();
 }

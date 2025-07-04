@@ -222,36 +222,62 @@ void mqtt_recv_message_callback(struct mosquitto *mosquit_ptr, void *obj, const 
     //printf("params:%s\n", cJSON_Print(value));
 
     sem_wait(sem);
-    attribute_ptr->hand_ctl = true;
+    ident_value = cJSON_GetObjectItem(value, TEMPERATRUE_THRESHOLD_NAME);
+    if(ident_value){
+        if(ident_value->valueint){
+            attribute_ptr->temperature_threshold = ident_value->valueint;
+        }
+        else{
+            attribute_ptr->temperature_threshold = ident_value->valueint;
+        }
+    }
+    ident_value = cJSON_GetObjectItem(value, GAS_THRESHOLD_NAME);
+    if(ident_value){
+        if(ident_value->valueint){
+            attribute_ptr->gas_threshold = ident_value->valueint;
+        }
+        else{
+            attribute_ptr->gas_threshold = ident_value->valueint;
+        }
+    }
 
     ident_value = cJSON_GetObjectItem(value, BEEPER_NAME);
-    if(ident_value->valueint){
-        attribute_ptr->beeper = true;
-        findDEVICEinLink(BEEPER_NAME)->open();
-    }
-    else{
-        attribute_ptr->beeper = false;
-        findDEVICEinLink(BEEPER_NAME)->close();
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->beeper = true;
+            findDEVICEinLink(BEEPER_NAME)->open();
+        }
+        else{
+            attribute_ptr->beeper = false;
+            findDEVICEinLink(BEEPER_NAME)->close();
+        }
     }
 
     ident_value = cJSON_GetObjectItem(value, LED_YELLOW_NAME);
-    if(ident_value->valueint){
-        attribute_ptr->led_yellow = true;
-        findDEVICEinLink(LED_YELLOW_NAME)->open();
-    }
-    else{
-        attribute_ptr->led_yellow = false;
-        findDEVICEinLink(LED_YELLOW_NAME)->close();
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->led_yellow = true;
+            findDEVICEinLink(LED_YELLOW_NAME)->open();
+        }
+        else{
+            attribute_ptr->led_yellow = false;
+            findDEVICEinLink(LED_YELLOW_NAME)->close();
+        }
     }
 
     ident_value = cJSON_GetObjectItem(value, SG_NAME);
-    if(ident_value->valueint){
-        attribute_ptr->window = true;
-        findDEVICEinLink(SG_NAME)->open();
-    }
-    else{
-        attribute_ptr->window = false;
-        findDEVICEinLink(SG_NAME)->close();
+    if(ident_value){
+        attribute_ptr->hand_ctl = true;
+        if(ident_value->valueint){
+            attribute_ptr->window = true;
+            findDEVICEinLink(SG_NAME)->open();
+        }
+        else{
+            attribute_ptr->window = false;
+            findDEVICEinLink(SG_NAME)->close();
+        }
     }
 
     sem_post(sem);

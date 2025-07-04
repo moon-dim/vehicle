@@ -39,6 +39,8 @@
 #define TEMPERATRUE_NAME	"temperature"
 #define HUMIDITY_NAME		"humidity"
 #define FACE_DETECTION_NAME "face_detection"
+#define TEMPERATRUE_THRESHOLD_NAME "temperature_threshold"
+#define GAS_THRESHOLD_NAME 	"gas_threshold"
 
 #define PCF8591_ADDRESS 0x48
 #define PCF8591_AIN0 0

@@ -78,6 +78,7 @@ void *thread_get_data(){
 void *thread_cmd_ctl(){
 
 	while(true){
+		findCMDinLink(HUMAN_CTL_NAME)->cmd_handler();
 		findCMDinLink(HOT_CTL_NAME)->cmd_handler();
 		findCMDinLink(GAS_CTL_NAME)->cmd_handler();
 		sleep(1);
